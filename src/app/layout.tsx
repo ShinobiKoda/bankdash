@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-// const inter = Inter({
-//   subsets: ['latin'],
-//   weight: ['400', '700'],
-//   variable: '--font-inter'
-// })
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-inter'
+})
 
 export const metadata: Metadata = {
   title: "Bank Dash",
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased`}
+        className={` ${inter.variable} antialiased`}
       >
         {children}
       </body>

@@ -9,7 +9,7 @@ interface HeaderProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Header({isOpen, setIsOpen}: HeaderProps) {
+export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const pathname = usePathname();
 
   const pageTitles: { [key: string]: string } = {
@@ -25,11 +25,10 @@ export default function Header({isOpen, setIsOpen}: HeaderProps) {
 
   const title = pageTitles[pathname] || "Dashboard";
 
-
   return (
     <div className="w-full flex flex-col gap-4 px-4 py-5">
-      <header className="w-full flex items-center justify-between">
-      <div
+      <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
+        <div
           className="relative w-[28px] h-[20px] flex flex-col justify-between cursor-pointer z-40"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -64,8 +63,8 @@ export default function Header({isOpen, setIsOpen}: HeaderProps) {
           />
         </div>
       </header>
-      <div className="w-full rounded-md">
-        <div className="flex items-center gap-2 p-3 bg-[#F5F7FA]">
+      <div className="w-full max-w-[1024px] mx-auto">
+        <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl">
           <Image
             src={"/images/search-icon.svg"}
             height={20}

@@ -1,9 +1,10 @@
+import CardSection from '@/components/CardSection'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-      Overview
+      <CardSection />
     </div>
   )
 }
