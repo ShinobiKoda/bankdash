@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 interface HeaderProps {
   isOpen: boolean;
@@ -26,7 +27,12 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const title = pageTitles[pathname] || "Dashboard";
 
   return (
-    <div className="w-full flex flex-col gap-4 px-4 py-5">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="w-full flex flex-col gap-4 px-4 py-5"
+    >
       <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
         <div
           className="relative w-[28px] h-[20px] flex flex-col justify-between cursor-pointer z-40"
@@ -78,6 +84,6 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
