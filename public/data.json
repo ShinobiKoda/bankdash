@@ -1,0 +1,37 @@
+{
+  "name": "Charlene Reed",
+  "username": "Charlene Reed",
+  "email": "charlenereed@gmail.com",
+  "password": "something",
+  "dob": "25th January 1990",
+  "location": {
+    "present_address": "San Jose, California USA",
+    "permanent_address": "San Jose, California USA",
+    "city": "San Jose",
+    "postal_code": 45962,
+    "country": "USA"
+  },
+  "cards": [
+    {
+      "number": "3788567856571234",
+      "name": "Eddy Cusuma",
+      "valid_thru": "12/22",
+      "balance": 5756,
+      "bank": "DBL"
+    },
+    {
+      "number": "1234567890213456",
+      "name": "Gojo Satoru",
+      "valid_thru": "02/27",
+      "balance": 90336,
+      "bank": "BRC"
+    },
+    {
+      "number": "1234567890213456",
+      "name": "Gojo Satoru",
+      "valid_thru": "02/27",
+      "balance": 90336,
+      "bank": "ABM"
+    }
+  ]
+}
