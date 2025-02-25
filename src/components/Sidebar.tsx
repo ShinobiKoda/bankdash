@@ -7,6 +7,9 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
+
+  const links = ["Overview", "Transactions", "Accounts", "Investments", "Credit-cards", "Loans", "Services", "Settings"]
+
   return (
     <>
       {/* Sidebar */}
@@ -16,12 +19,11 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         } transition-transform duration-300 ease-in-out z-50`}
       >
         <ul className="p-6 space-y-4">
-          <li className="hover:text-gray-300" onClick={()=>setIsOpen(false)}>
-            <Link href={"/dashboard/overview"}>Overview</Link>
-          </li>
-          <li className="hover:text-gray-300" onClick={()=>setIsOpen(false)}>
-            <Link href={"/dashboard/transactions"}>Transactions</Link>
-          </li>
+          {links.map((link)=>(
+            <li key={link} onClick={()=>setIsOpen(false)}>
+              <Link href={`/dashboard/${link}`}>{link}</Link>
+            </li>
+          ))}
         </ul>
       </aside>
 
