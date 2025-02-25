@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content Area */}
       <div className="flex-1 min-h-screen bg-white">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-        <div className="p-6">{children}</div>
+        <div className="px-4">{children}</div>
       </div>
     </div>
   );
