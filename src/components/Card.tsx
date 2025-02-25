@@ -3,8 +3,25 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { fetchUserData } from "@/lib/api";
+import { useEffect, useState } from "react";
+import type { Card } from "@/types/types";
+
 
 export default function Card() {
+  const [cards, setCards] = useState<Card[]>([]);
+  
+  const getUserCard = async() => {
+    try{
+      const user = await fetchUserData();
+      setCards(user.cards);
+    }catch(error){
+      console.log("Failed to load user data");
+      return [];
+    }
+  }
+
+
   return (
     <div className="md:grid md:grid-cols-2 md:space-x-4 flex flex-col space-y-4">
       <motion.section
