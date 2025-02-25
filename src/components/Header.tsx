@@ -21,8 +21,6 @@ export default function Header({isOpen, setIsOpen}: HeaderProps) {
     "/dashboard/Accounts": "Accounts",
     "/dashboard/Credit-cards": "Credit Cards",
     "/dashboard/Investments": "Investments",
-    
-    
   };
 
   const title = pageTitles[pathname] || "Dashboard";
@@ -31,10 +29,30 @@ export default function Header({isOpen, setIsOpen}: HeaderProps) {
   return (
     <div className="w-full flex flex-col gap-4 px-4 py-5">
       <header className="w-full flex items-center justify-between">
-        <div className="hamburger w-[28px] h-[20px] flex flex-col justify-between *:rounded-sm cursor-pointer hover:opacity-90 z-20" onClick={()=>setIsOpen(!isOpen)}>
-          <div className="h-[2px] bg-black w-full"></div>
-          <div className="h-[2px] bg-black w-full"></div>
-          <div className="h-[2px] bg-black w-full"></div>
+      <div
+          className="relative w-[28px] h-[20px] flex flex-col justify-between cursor-pointer z-40"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {/* Top bar */}
+          <div
+            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
+              isOpen ? "rotate-45 translate-y-[9px] bg-white" : ""
+            }`}
+          ></div>
+
+          {/* Middle bar (disappears when menu is open) */}
+          <div
+            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
+              isOpen ? "opacity-0" : ""
+            }`}
+          ></div>
+
+          {/* Bottom bar */}
+          <div
+            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
+              isOpen ? "-rotate-45 -translate-y-[9px] bg-white" : ""
+            }`}
+          ></div>
         </div>
         <h1 className="font-bold text-2xl">{title}</h1>
         <div className="w-10 h-10 rounded-full overflow-hidden">
