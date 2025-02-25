@@ -2,8 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
-import Sidebar from "./Sidebar";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   isOpen: boolean;
@@ -11,6 +10,23 @@ interface HeaderProps {
 }
 
 export default function Header({isOpen, setIsOpen}: HeaderProps) {
+  const pathname = usePathname();
+
+  const pageTitles: { [key: string]: string } = {
+    "/dashboard/Overview": "Overview",
+    "/dashboard/Transactions": "Transactions",
+    "/dashboard/Settings": "Settings",
+    "/dashboard/Services": "Services",
+    "/dashboard/Loans": "Loans",
+    "/dashboard/Accounts": "Accounts",
+    "/dashboard/Credit-cards": "Credit Cards",
+    "/dashboard/Investments": "Investments",
+    
+    
+  };
+
+  const title = pageTitles[pathname] || "Dashboard";
+
 
   return (
     <div className="w-full flex flex-col gap-4 px-4 py-5">
@@ -20,7 +36,7 @@ export default function Header({isOpen, setIsOpen}: HeaderProps) {
           <div className="h-[2px] bg-black w-full"></div>
           <div className="h-[2px] bg-black w-full"></div>
         </div>
-        <h1 className="font-bold text-2xl">Overview</h1>
+        <h1 className="font-bold text-2xl">{title}</h1>
         <div className="w-10 h-10 rounded-full overflow-hidden">
           <Image
             src={"/images/profile-pic.svg"}
