@@ -1,39 +1,82 @@
-import React from "react";
-import Link from "next/link";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 
-interface SidebarProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
 
-export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
+// Menu items.
+const items = [
+  {
+    title: "Dashboard",
+    url: "/dashboard/Overview",
+    icon: Home,
+  },
+  {
+    title: "Accounts",
+    url: "/dashboard/Accounts",
+    icon: Inbox,
+  },
+  {
+    title: "Credit Cards",
+    url: "/dashboard/Credit-cards",
+    icon: Calendar,
+  },
+  {
+    title: "Investments",
+    url: "/dashboard/Investments",
+    icon: Search,
+  },
+  {
+    title: "Loans",
+    url: "/dashboard/Loans",
+    icon: Settings,
+  },
+  {
+    title: "Services",
+    url: "/dashboard/Services",
+    icon: Settings,
+  },
+  {
+    title: "Transactions",
+    url: "/dashboard/Transactions",
+    icon: Settings,
+  },
+  {
+    title: "Settings",
+    url: "/dashboard/Settings",
+    icon: Settings,
+  },
+]
 
-  const links = ["Overview", "Transactions", "Accounts", "Investments", "Credit-cards", "Loans", "Services", "Settings"]
-
+export function AppSidebar() {
   return (
-    <>
-      {/* Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-900 text-white shadow-lg transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out z-30`}
-      >
-        <ul className="p-6 space-y-4 mt-[7rem]">
-          {links.map((link)=>(
-            <li key={link} onClick={()=>setIsOpen(false)}>
-              <Link href={`/dashboard/${link}`}>{link}</Link>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      {/* Overlay (click outside to close) */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20"
-          onClick={() => setIsOpen(false)}
-        ></div>
-      )}
-    </>
-  );
+    <Sidebar collapsible="icon">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  )
 }

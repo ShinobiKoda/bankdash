@@ -5,12 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-interface HeaderProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+export default function Header() {
   const pathname = usePathname();
 
   const pageTitles: { [key: string]: string } = {
@@ -34,31 +29,6 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
       className="w-full flex flex-col gap-4 px-4 py-5"
     >
       <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
-        <div
-          className="relative w-[28px] h-[20px] flex flex-col justify-between cursor-pointer z-40"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {/* Top bar */}
-          <div
-            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-[9px] bg-white" : ""
-            }`}
-          ></div>
-
-          {/* Middle bar (disappears when menu is open) */}
-          <div
-            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          ></div>
-
-          {/* Bottom bar */}
-          <div
-            className={`h-[2px] bg-black w-full rounded-sm transition-all duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-[9px] bg-white" : ""
-            }`}
-          ></div>
-        </div>
         <h1 className="font-bold text-2xl">{title}</h1>
         <div className="w-10 h-10 rounded-full overflow-hidden">
           <Image

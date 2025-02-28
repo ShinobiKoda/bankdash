@@ -28,7 +28,7 @@ export default function Card() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 20 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col gap-4 bg-[#0A06F4] rounded-xl shadow-lg text-white"
+        className="flex flex-col gap-4 bg-gradient-to-br from-[#0A06F4] via-blue-800 to-blue-500 rounded-xl shadow-lg text-white"
       >
         <div className="w-full flex items-center justify-between p-3">
           <p className="flex flex-col gap-[0.2rem]">
@@ -52,7 +52,7 @@ export default function Card() {
             <span className="font-semibold text-[1.4rem]">12/22</span>
           </p>
         </div>
-        <p className="flex items-center justify-between bg-gradient-to-b from-white to-[#0A06F4] from-2% to-90% to-opacity-15 w-full p-4 rounded-b-xl">
+        <p className="flex items-center justify-between from-2% to-90% to-opacity-15 w-full p-4 rounded-b-xl">
           <span className="font-semibold text-lg">3784 **** **** 1234</span>
           <Image
             src={"/images/card-logo.svg"}
