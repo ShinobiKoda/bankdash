@@ -4,6 +4,9 @@ import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useSidebar } from "./ui/sidebar";
+
 
 export default function Header() {
   const pathname = usePathname();
@@ -21,6 +24,10 @@ export default function Header() {
 
   const title = pageTitles[pathname] || "Dashboard";
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const {toggleSidebar} = useSidebar();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -29,6 +36,20 @@ export default function Header() {
       className="w-full flex flex-col gap-4 px-4 py-5"
     >
       <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
+        <button
+      className="flex flex-col justify-center items-center w-10 h-10 p-2 border-2 border-gray-700 rounded-md focus:outline-none"
+      onClick={toggleSidebar}
+    >
+      <span
+        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
+      ></span>
+      <span
+        className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${isOpen ? "opacity-0" : "my-1"}`}
+      ></span>
+      <span
+        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
+      ></span>
+    </button>
         <h1 className="font-bold text-2xl">{title}</h1>
         <div className="w-10 h-10 rounded-full overflow-hidden">
           <Image
