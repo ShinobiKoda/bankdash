@@ -1,16 +1,20 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+"use client"
 
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+
+
+import { Home, Settings, DollarSignIcon, User, PiggyBank, WalletCards, SpadeIcon, Lightbulb } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar
-} from "@/components/ui/sidebar"
+  SidebarHeader
+} from "@/components/ui/sidebar";
 
 // Menu items.
 const items = [
@@ -20,57 +24,69 @@ const items = [
     icon: Home,
   },
   {
-    title: "Accounts",
-    url: "/dashboard/Accounts",
-    icon: Inbox,
+    title: "Transactions",
+    url: "/dashboard/Transactions",
+    icon: DollarSignIcon,
   },
   {
-    title: "Credit Cards",
-    url: "/dashboard/Credit-cards",
-    icon: Calendar,
+    title: "Accounts",
+    url: "/dashboard/Accounts",
+    icon: User,
   },
   {
     title: "Investments",
     url: "/dashboard/Investments",
-    icon: Search,
+    icon: PiggyBank,
+  },
+  {
+    title: "Credit Cards",
+    url: "/dashboard/Credit-cards",
+    icon: WalletCards,
   },
   {
     title: "Loans",
     url: "/dashboard/Loans",
-    icon: Settings,
+    icon: DollarSignIcon,
   },
   {
     title: "Services",
     url: "/dashboard/Services",
-    icon: Settings,
+    icon: SpadeIcon,
   },
   {
-    title: "Transactions",
-    url: "/dashboard/Transactions",
-    icon: Settings,
+    title: "My Privileges",
+    url: "/dashboard/Overview",
+    icon: Lightbulb,
   },
   {
-    title: "Settings",
+    title: "Setting",
     url: "/dashboard/Settings",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
-
-  
-
+  const pathname = usePathname();
 
   return (
     <Sidebar collapsible="offcanvas">
+      <SidebarHeader>
+        <Image width={20} height={20} alt="Logo" src="/images/icon-bankdash.svg"/>
+        <span className="font-extrabold text-3xl text-[#343C6A]">BankDash</span>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="flex flex-col gap-5">
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                <SidebarMenuItem key={item.title} >
+                  <SidebarMenuButton asChild className="text-xl">
+                    <a
+                      href={item.url}
+                      className={`flex items-center gap-2 ${
+                        pathname === item.url ? "text-[#AC39D4]" : "text-[#B1B1B1]"
+                      }`}
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
@@ -82,5 +98,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

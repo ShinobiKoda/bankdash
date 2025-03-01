@@ -28,6 +28,11 @@ export default function Header() {
 
   const {toggleSidebar} = useSidebar();
 
+  const animateHamburger = () => {
+    toggleSidebar();
+    setIsOpen(!isOpen);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -37,17 +42,17 @@ export default function Header() {
     >
       <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
         <button
-      className="flex flex-col justify-center items-center w-10 h-10 p-2 border-2 border-gray-700 rounded-md focus:outline-none"
-      onClick={toggleSidebar}
+      className="flex flex-col justify-center items-center w-10 h-10 p-2"
+      onClick={()=> animateHamburger()}
     >
       <span
-        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
+        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${isOpen ? "rotate-45 translate-y-0.5" : ""}`}
       ></span>
       <span
         className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${isOpen ? "opacity-0" : "my-1"}`}
       ></span>
       <span
-        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
+        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${isOpen ? "-rotate-45 -translate-y-0.5" : ""}`}
       ></span>
     </button>
         <h1 className="font-bold text-2xl">{title}</h1>
