@@ -5,7 +5,7 @@ export interface User{
   password: string
   dob: string,
   location: Location
-  cards: Card[]
+  credit_cards: CreditCard[]
 }
 
 export interface Location{
@@ -16,7 +16,7 @@ export interface Location{
   country: string
 }
 
-export interface Card{
+export interface CreditCard{
   number: string
   name: string
   valid_thru: string

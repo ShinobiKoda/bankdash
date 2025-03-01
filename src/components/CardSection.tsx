@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Card from "./Card";
+import Credit_Card from "./Card";
 import { motion } from "framer-motion";
 
 export default function CardSection() {
@@ -16,7 +16,7 @@ export default function CardSection() {
         <h3 className="font-semibold text-xl">My cards</h3>
         <button className="hover:opacity-90 cursor-pointer">See All</button>
       </header>
-      <Card />
+      <Credit_Card />
     </motion.section>
   );
 }
