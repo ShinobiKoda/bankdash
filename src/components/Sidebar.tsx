@@ -5,6 +5,7 @@ import Image from "next/image";
 
 
 import { Home, Settings, DollarSignIcon, User, PiggyBank, WalletCards, SpadeIcon, Lightbulb } from "lucide-react";
+
 import {
   Sidebar,
   SidebarContent,
@@ -70,24 +71,24 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="offcanvas">
-      <SidebarHeader>
-        <Image width={20} height={20} alt="Logo" src="/images/icon-bankdash.svg"/>
-        <span className="font-extrabold text-3xl text-[#343C6A]">BankDash</span>
+    <SidebarHeader className="mb-8">
+        <Image width={40} height={40} alt="Logo" src="/images/icon-bankdash.svg"/>
+        <span className="font-extrabold text-2xl text-[#343C6A]">BankDash</span>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu className="flex flex-col gap-5">
+            <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} >
-                  <SidebarMenuButton asChild className="text-xl">
+                  <SidebarMenuButton asChild className="text-xl" size="lg">
                     <a
                       href={item.url}
-                      className={`flex items-center gap-2 ${
+                      className={`flex items-center gap-2 hover:text-[#AC39D4] ${
                         pathname === item.url ? "text-[#AC39D4]" : "text-[#B1B1B1]"
                       }`}
                     >
-                      <item.icon />
+                      <item.icon width="64" height="64"/>
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
