@@ -35,12 +35,12 @@ export default function Credit_Card() {
         opts={{
           align: "start",
         }}
-        className="w-full"
+        className="w-full overflow-hidden"
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="flex gap-[0.5rem]">
           {cards.length > 0 ? (
             cards.map(({ name, number, valid_thru, balance, bank }, index) => (
-              <CarouselItem key={index} className="border rounded-lg shadow md:basis-1/2 pl-4">
+              <CarouselItem key={index} className="border rounded-lg shadow md:basis-[80%] sm:basis-[80%] basis-[90%]">
                 <h2 className="text-lg font-semibold">{bank}</h2>
                 <p>Cardholder: {name}</p>
                 <p>Number: **** **** **** {number.slice(-4)}</p>
@@ -56,57 +56,3 @@ export default function Credit_Card() {
   );
 }
 
-/*
-
-  import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
- 
-export function CarouselSize() {
-  return (
-    <Carousel
-      opts={{
-        align: "start",
-      }}
-      className="w-full max-w-sm"
-    >
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-3xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  )
-}
-
-{cards.length > 0 ? (
-          cards.map(({ name, number, valid_thru, balance, bank }, index) => (
-            <div key={index} className="border p-4 rounded-lg shadow">
-              <h2 className="text-lg font-semibold">{bank}</h2>
-              <p>Cardholder: {name}</p>
-              <p>Number: **** **** **** {number.slice(-4)}</p>
-              <p>Valid Thru: {valid_thru}</p>
-              <p>Balance: ${balance.toLocaleString()}</p>
-            </div>
-          ))
-        ) : (
-          <p>Loading cards...</p>
-        )}
-
-
- */
