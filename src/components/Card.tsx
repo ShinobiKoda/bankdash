@@ -11,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { format } from "path";
 
 export default function Credit_Card() {
   const [cards, setCards] = useState<CreditCard[]>([]);
@@ -29,6 +30,17 @@ export default function Credit_Card() {
     getUserCard();
   }, []);
 
+  const formatCardNumber = (number: string) => {
+    if (!number || number.length < 8) return number; // Handle invalid numbers
+  
+    const firstFour = number.slice(0, 4);
+    const lastFour = number.slice(-4);
+    const masked = "**** **** ****"; // Adjust based on total length
+  
+    return `${firstFour} ${masked} ${lastFour}`;
+  };
+  
+
   return (
     <Carousel
       opts={{
@@ -41,7 +53,7 @@ export default function Credit_Card() {
           cards.map(({ name, number, valid_thru, balance, bank }, index) => (
             <CarouselItem
               key={index}
-              className="bg-blue-700 rounded-xl p-3 text-white basis-[93%] overflow-hidden flex flex-col gap-5"
+              className="bg-blue-700 rounded-xl p-3 text-white flex flex-col gap-5 md:basis-1/2 basis-[85%]"
             >
               <div className="flex w-full items-center justify-between">
                 <p className="flex flex-col gap-1">
@@ -65,13 +77,13 @@ export default function Credit_Card() {
                   <span>{valid_thru}</span>
                 </p>
               </div>
-              <p>
-                <span>{number}</span>
+              <p className="flex items-center justify-between">
+                <span>{formatCardNumber(number)}</span>
                 <Image
                   src="/images/card-logo.svg"
                   alt="card-logo"
-                  height={30}
-                  width={30}
+                  height={40}
+                  width={40}
                 />
               </p>
             </CarouselItem>
