@@ -16,6 +16,7 @@ import {
   SidebarMenuItem,
   SidebarHeader
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // Menu items.
 const items = [
@@ -82,7 +83,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} >
                   <SidebarMenuButton asChild className="text-xl" size="lg">
-                    <a
+                    <Link
                       href={item.url}
                       className={`flex items-center gap-2 hover:text-[#AC39D4] ${
                         pathname === item.url ? "text-[#AC39D4]" : "text-[#B1B1B1]"
@@ -90,7 +91,7 @@ export function AppSidebar() {
                     >
                       <item.icon width="64" height="64"/>
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
