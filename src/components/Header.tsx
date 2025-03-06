@@ -19,6 +19,7 @@ export default function Header() {
     "/dashboard/Loans": "Loans",
     "/dashboard/Accounts": "Accounts",
     "/dashboard/Credit-cards": "Credit Cards",
+    "/dashboard/Privileges": "My Privileges",
     "/dashboard/Investments": "Investments",
   };
 
@@ -43,7 +44,7 @@ export default function Header() {
       <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
         <button
       className="flex flex-col justify-center items-center w-10 h-10 p-2"
-      onClick={()=> animateHamburger()}
+      onClick={toggleSidebar}
     >
       <span
         className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${isOpen ? "rotate-45 translate-y-0.5" : ""}`}
