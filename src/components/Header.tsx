@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useSidebar } from "./ui/sidebar";
 
-
 export default function Header() {
   const pathname = usePathname();
 
@@ -27,12 +26,12 @@ export default function Header() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const {toggleSidebar} = useSidebar();
+  const { toggleSidebar } = useSidebar();
 
   const animateHamburger = () => {
     toggleSidebar();
     setIsOpen(!isOpen);
-  }
+  };
 
   return (
     <motion.div
@@ -41,46 +40,70 @@ export default function Header() {
       transition={{ duration: 0.4 }}
       className="w-full flex flex-col gap-4 px-4 py-5"
     >
-      <header className="w-full flex items-center justify-between max-w-[1024px] mx-auto">
-        <button
-      className="flex flex-col justify-center items-center w-10 h-10 p-2"
-      onClick={toggleSidebar}
-    >
-      <span
-        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${isOpen ? "rotate-45 translate-y-0.5" : ""}`}
-      ></span>
-      <span
-        className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${isOpen ? "opacity-0" : "my-1"}`}
-      ></span>
-      <span
-        className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${isOpen ? "-rotate-45 -translate-y-0.5" : ""}`}
-      ></span>
-    </button>
-        <h1 className="font-bold text-2xl">{title}</h1>
-        <div className="w-10 h-10 rounded-full overflow-hidden">
-          <Image
-            src={"/images/profile-pic.svg"}
-            width={100}
-            height={100}
-            alt="profile-pic"
-          />
+      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full max-w-[1440px]">
+        <div className="w-full flex items-center justify-between mx-auto">
+          <button
+            className="flex flex-col justify-center items-center w-10 h-10 p-2 lg:hidden"
+            onClick={toggleSidebar}
+          >
+            <span
+              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${
+                isOpen ? "rotate-45 translate-y-0.5" : ""
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-gray-700 transition-opacity duration-300 ${
+                isOpen ? "opacity-0" : "my-1"
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400 ${
+                isOpen ? "-rotate-45 -translate-y-0.5" : ""
+              }`}
+            ></span>
+          </button>
+          <h1 className="font-bold text-2xl">{title}</h1>
+          <div className="w-10 h-10 rounded-full overflow-hidden">
+            <Image
+              src={"/images/profile-pic.svg"}
+              width={100}
+              height={100}
+              alt="profile-pic"
+              className="lg:hidden"
+            />
+          </div>
+        </div>
+        <div className="w-full mx-auto lg:flex lg:gap-4 lg:items-center">
+          <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl w-full lg:max-w-[255px]">
+            <Image
+              src={"/images/search-icon.svg"}
+              height={20}
+              width={20}
+              alt="Search Icon"
+            />
+            <input
+              type="text"
+              placeholder="Search for something"
+              className="bg-transparent outline-none border-none w-full"
+            />
+          </div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full lg:block hidden">
+
+          </div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:block">
+
+          </div>
+          <div className="min-w-12 min-h-12 rounded-full overflow-hidden">
+            <Image
+              src={"/images/profile-pic.svg"}
+              width={50}
+              height={50}
+              alt="profile-pic"
+              className="lg:block hidden"
+            />
+          </div>
         </div>
       </header>
-      <div className="w-full max-w-[1024px] mx-auto">
-        <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl">
-          <Image
-            src={"/images/search-icon.svg"}
-            height={20}
-            width={20}
-            alt="Search Icon"
-          />
-          <input
-            type="text"
-            placeholder="Search for something"
-            className="bg-transparent outline-none border-none w-full"
-          />
-        </div>
-      </div>
     </motion.div>
   );
 }
