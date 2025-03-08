@@ -40,7 +40,7 @@ export default function Header() {
       transition={{ duration: 0.4 }}
       className="w-full flex flex-col gap-4 px-4 py-5"
     >
-      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full">
+      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4">
         <div className="w-full flex items-center justify-between">
           <button
             className="flex flex-col justify-center items-center w-10 h-10 p-2 lg:hidden"
