@@ -73,8 +73,8 @@ export default function Header() {
             />
           </div>
         </div>
-        <div className="w-full lg:flex lg:gap-4 lg:items-center">
-          <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl w-full lg:max-w-[255px]">
+        <div className="lg:flex lg:gap-4 lg:items-center">
+          <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl w-full lg:min-w-[255px]">
             <Image
               src={"/images/search-icon.svg"}
               height={20}
