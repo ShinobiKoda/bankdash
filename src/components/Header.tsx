@@ -40,8 +40,8 @@ export default function Header() {
       transition={{ duration: 0.4 }}
       className="w-full flex flex-col gap-4 px-4 py-5"
     >
-      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full max-w-[1440px]">
-        <div className="w-full flex items-center justify-between mx-auto">
+      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full">
+        <div className="w-full flex items-center justify-between">
           <button
             className="flex flex-col justify-center items-center w-10 h-10 p-2 lg:hidden"
             onClick={toggleSidebar}
@@ -73,7 +73,7 @@ export default function Header() {
             />
           </div>
         </div>
-        <div className="w-full mx-auto lg:flex lg:gap-4 lg:items-center">
+        <div className="w-full lg:flex lg:gap-4 lg:items-center">
           <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl w-full lg:max-w-[255px]">
             <Image
               src={"/images/search-icon.svg"}
@@ -93,13 +93,12 @@ export default function Header() {
           <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:block">
 
           </div>
-          <div className="min-w-12 min-h-12 rounded-full overflow-hidden">
+          <div className="min-w-12 min-h-12 rounded-full overflow-hidden lg:block hidden">
             <Image
               src={"/images/profile-pic.svg"}
               width={50}
               height={50}
               alt="profile-pic"
-              className="lg:block hidden"
             />
           </div>
         </div>
