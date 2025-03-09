@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { CreditCard } from "@/types/types";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Credit_Card() {
   const [cards, setCards] = useState<CreditCard[]>([]);
@@ -32,12 +33,25 @@ export default function Credit_Card() {
     return `${firstFour} ${masked} ${lastFour}`;
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: index * 0.2, duration: 0.5, ease: "easeOut" },
+    }),
+  };
+
   return (
     <div className="flex flex-col gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-      {cards.map((card) => (
-        <div
+      {cards.map((card, index) => (
+        <motion.div
           key={card.number}
           className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-4 overflow-hidden"
+          variants={cardVariants}
+          initial="hidden"
+          animate="visible"
+          custom={index} // Pass index for staggered delay
         >
           <div className="p-3 w-full flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -76,7 +90,7 @@ export default function Credit_Card() {
               width={35}
             />
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
