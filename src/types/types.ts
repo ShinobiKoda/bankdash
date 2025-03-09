@@ -6,6 +6,15 @@ export interface User{
   dob: string,
   location: Location
   credit_cards: CreditCard[]
+  recent_transactions: Transaction[];
+  weekly_activities: Activity[];
+  expense_stats: {
+    entertainment: string
+    bill_expense: string
+    others: string
+    investment: string
+  }
+
 }
 
 export interface Location{
@@ -22,4 +31,17 @@ export interface CreditCard{
   valid_thru: string
   balance: number;
   bank: string
+}
+
+export interface Transaction {
+  description: string
+  date: string
+  amount: number
+  type: string
+}
+
+export interface Activity{
+  day: string
+  deposit: number
+  withdrawal: number
 }

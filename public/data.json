@@ -33,5 +33,68 @@
       "balance": 90336,
       "bank": "ABM"
     }
-  ]
+  ],
+  "recent_transactions": [
+    {
+      "description": "Desposit from James",
+      "date": "28 January 2025",
+      "amount": 850,
+      "type": "debit"
+    },
+    {
+      "description": "Paypal",
+      "date": "25 January 2025",
+      "amount": 2500,
+      "type": "credit"
+    },
+    {
+      "description": "Jemi Wilson",
+      "date": "21 January 2025",
+      "amount": 5400,
+      "type": "credit"
+    }
+  ],
+  "weekly_activities": [
+    {
+      "day":"Monday",
+      "deposit": 290,
+      "withdrawal": 350
+    },
+    {
+      "day":"Tuesday",
+      "deposit": 380,
+      "withdrawal": 490
+    },
+    {
+      "day":"Wednesday",
+      "deposit": 220,
+      "withdrawal": 160
+    },
+    {
+      "day":"Thursday",
+      "deposit": 250,
+      "withdrawal": 405
+    },
+    {
+      "day":"Friday",
+      "deposit": 310,
+      "withdrawal": 400
+    },
+    {
+      "day":"Saturday",
+      "deposit": 230,
+      "withdrawal": 495
+    },
+    {
+      "day":"Sunday",
+      "deposit": 120,
+      "withdrawal": 330
+    }
+  ],
+  "expense_stats": {
+    "entertainment": "30%",
+    "bill_expense": "15%",
+    "others": "35%",
+    "investment": "20%"
+  }
 }
