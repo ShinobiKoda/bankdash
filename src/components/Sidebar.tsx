@@ -106,7 +106,7 @@ export function AppSidebar() {
   };
 
   return isLargeScreen ? (
-    <Sidebar collapsible="none" className="h-screen shadow-lg">
+    <Sidebar collapsible="none" className="shadow-lg">
       <SidebarHeader className="mb-8">
         <Image
           width={40}

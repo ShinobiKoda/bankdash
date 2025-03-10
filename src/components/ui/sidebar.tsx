@@ -187,7 +187,7 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
-            "flex h-full w-[--sidebar-width] flex-col text-sidebar-foreground shadow-xl border",
+            "flex h-full w-[--sidebar-width] flex-col text-sidebar-foreground shadow-xl border fixed left-0 top-0",
             className
           )}
           ref={ref}

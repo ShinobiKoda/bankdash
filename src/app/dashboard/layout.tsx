@@ -10,10 +10,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <AppSidebar />
+       
+          <AppSidebar />
+        
 
       {/* Main Content Area */}
-      <div className="flex-1 min-h-screen bg-white">
+      <div className="flex-1 min-h-screen bg-white lg:ml-[16rem]">
         <Header />
         <div className="px-4">{children}</div>
       </div>
