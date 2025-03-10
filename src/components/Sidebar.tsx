@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import {
   Home,
@@ -25,10 +26,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarHeader,
-  useSidebar
+  useSidebar,
 } from "@/components/ui/sidebar";
-
-
 
 // Menu items.
 const items = [
@@ -82,9 +81,7 @@ const items = [
 export function AppSidebar() {
   const pathname = usePathname();
 
-  const {toggleSidebar} = useSidebar();
-
-
+  const { toggleSidebar } = useSidebar();
 
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
 
@@ -99,8 +96,17 @@ export function AppSidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const cardVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: (index: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: index * 0.15, duration: 0.4, ease: "easeOut" },
+    }),
+  };
+
   return isLargeScreen ? (
-    <Sidebar collapsible="none" className="h-screen">
+    <Sidebar collapsible="none" className="h-screen shadow-lg">
       <SidebarHeader className="mb-8">
         <Image
           width={40}
@@ -114,23 +120,30 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="text-xl" size="lg">
-                    <Link
-                      href={item.url}
-                      className={`flex items-center gap-2 hover:text-[#AC39D4] ${
-                        pathname === item.url
-                          ? "text-[#AC39D4]"
-                          : "text-[#B1B1B1]"
-                      }`}
-                      
-                    >
-                      <item.icon width="64" height="64" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+              {items.map((item, index) => (
+                <motion.div
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={index}
+                  key={item.title}
+                >
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild className="text-xl" size="lg">
+                      <Link
+                        href={item.url}
+                        className={`flex items-center gap-2 hover:text-[#AC39D4] ${
+                          pathname === item.url
+                            ? "text-[#AC39D4]"
+                            : "text-[#B1B1B1]"
+                        }`}
+                      >
+                        <item.icon width="64" height="64" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </motion.div>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -155,29 +168,36 @@ export function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="text-xl" size="lg">
-                      <Link
-                        href={item.url}
-                        className={`flex items-center gap-2 hover:text-[#AC39D4] ${
-                          pathname === item.url
-                            ? "text-[#AC39D4]"
-                            : "text-[#B1B1B1]"
-                        }`}
-                        onClick={(e) => {
-                          if (!isLargeScreen) {
-                            // Prevent unnecessary toggling if sidebar is already closing due to overlay
-                            setTimeout(() => toggleSidebar(), 100);
-                          }
-                        }}
-                        
-                      >
-                        <item.icon width="64" height="64" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                {items.map((item, index) => (
+                  <motion.div 
+                  key={item.title}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={index}
+                  >
+                    <SidebarMenuItem>
+                      <SidebarMenuButton asChild className="text-xl" size="lg">
+                        <Link
+                          href={item.url}
+                          className={`flex items-center gap-2 hover:text-[#AC39D4] ${
+                            pathname === item.url
+                              ? "text-[#AC39D4]"
+                              : "text-[#B1B1B1]"
+                          }`}
+                          onClick={(e) => {
+                            if (!isLargeScreen) {
+                              // Prevent unnecessary toggling if sidebar is already closing due to overlay
+                              setTimeout(() => toggleSidebar(), 100);
+                            }
+                          }}
+                        >
+                          <item.icon width="64" height="64" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  </motion.div>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>

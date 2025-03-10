@@ -28,11 +28,6 @@ export default function Header() {
 
   const { toggleSidebar } = useSidebar();
 
-  const animateHamburger = () => {
-    toggleSidebar();
-    setIsOpen(!isOpen);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}

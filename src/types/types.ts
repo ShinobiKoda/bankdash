@@ -14,7 +14,6 @@ export interface User{
     others: string
     investment: string
   }
-
 }
 
 export interface Location{

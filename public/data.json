@@ -21,7 +21,7 @@
     },
     {
       "number": "1234567890213456",
-      "name": "Gojo Satoru",
+      "name": "Gerad Miracle",
       "valid_thru": "02/27",
       "balance": 90336,
       "bank": "BRC"
@@ -29,7 +29,7 @@
     {
       "number": "3344134519987653",
       "name": "Gojo Satoru",
-      "valid_thru": "02/27",
+      "valid_thru": "12/01",
       "balance": 90336,
       "bank": "ABM"
     }
