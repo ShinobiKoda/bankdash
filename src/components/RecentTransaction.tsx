@@ -25,7 +25,12 @@ export default function RecentTransaction() {
   }, []);
 
   return (
-    <section className="flex flex-col gap-4 mb-[30rem]">
+    <motion.section
+     className="flex flex-col gap-4 mb-[30rem]"
+     initial={{opacity: 0, x: -30}}
+     animate={{opacity: 1, x: 0}}
+     transition={{duration: 0.8}}
+     >
       <h1 className="font-semibold text-xl text-[#343C6A]">
         Recent Transaction
       </h1>
@@ -60,6 +65,6 @@ export default function RecentTransaction() {
           <p>No transactions</p>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 }
