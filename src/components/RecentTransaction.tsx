@@ -26,8 +26,8 @@ export default function RecentTransaction() {
 
   return (
     <motion.section
-     className="flex flex-col gap-4 mb-[30rem]"
-     initial={{opacity: 0, x: -30}}
+     className="flex flex-col gap-4"
+     initial={{opacity: 0, x: 30}}
      animate={{opacity: 1, x: 0}}
      transition={{duration: 0.8}}
      >
