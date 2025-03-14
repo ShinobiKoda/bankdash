@@ -2,7 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import {ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent, } from "@/components/ui/chart";
 import { fetchUserData } from "@/lib/api";
 import type { Activity } from "@/types/types"; 
 import { motion} from "framer-motion"
@@ -69,6 +72,7 @@ export default function WeelyActivity() {
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <YAxis tickLine={true} tickMargin={10} axisLine={true} />
+            <ChartTooltip content={<ChartTooltipContent />} />
             <Bar dataKey="withdrawal" fill="#1814F3" radius={4} />
             <Bar dataKey="deposit" fill="#16DBCC" radius={4} />
           </BarChart>

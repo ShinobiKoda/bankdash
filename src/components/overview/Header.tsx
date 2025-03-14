@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useSidebar } from "./ui/sidebar";
+import { useSidebar } from "../ui/sidebar";
 
 export default function Header() {
   const pathname = usePathname();
@@ -82,12 +82,8 @@ export default function Header() {
               className="bg-transparent outline-none border-none w-full"
             />
           </div>
-          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full lg:block hidden">
-
-          </div>
-          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:block">
-
-          </div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full lg:block hidden"></div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:block"></div>
           <div className="min-w-12 min-h-12 rounded-full overflow-hidden lg:block hidden">
             <Image
               src={"/images/profile-pic.svg"}

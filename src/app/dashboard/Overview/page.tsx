@@ -1,7 +1,7 @@
-import CardSection from "@/components/CardSection";
-import ExpenseStats from "@/components/ExpenseStats";
-import RecentTransaction from "@/components/RecentTransaction";
-import WeelyActivity from "@/components/WeelyActivity";
+import CardSection from "@/components/overview/CardSection";
+import ExpenseStats from "@/components/overview/ExpenseStats";
+import RecentTransaction from "@/components/overview/RecentTransaction";
+import WeelyActivity from "@/components/overview/WeelyActivity";
 import React from "react";
 
 export default function page() {
