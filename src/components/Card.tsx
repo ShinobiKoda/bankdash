@@ -47,7 +47,7 @@ export default function Credit_Card() {
       {cards.map((card, index) => (
         <motion.div
           key={card.number}
-          className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-2xl flex flex-col gap-4 overflow-hidden"
+          className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-4 overflow-hidden"
           variants={cardVariants}
           initial="hidden"
           animate="visible"
@@ -69,19 +69,19 @@ export default function Credit_Card() {
               />
             </div>
 
-            <div className="flex items-center gap-[4rem] lg:gap-8rem">
+            <div className="flex items-center gap-8">
               <p className="flex flex-col">
                 <span className="opacity-70">CARD HOLDER</span>
                 <span className="text-lg">{card.name}</span>
               </p>
               <p className="flex flex-col">
                 <span className="opacity-70">VALID THRU</span>
-                <span className="text-lg">{card.valid_thru}</span>
+                <span className="text-lg">12/22</span>
               </p>
             </div>
           </div>
 
-          <div className="flex items-center justify-between bg-gradient-to-r from-white/10 to-white/10 p-4 w-full">
+          <div className="flex items-center justify-between bg-gradient-to-r from-white/10 to-white/10 backdrop-blur-lg p-3 w-full">
             <p className="text-xl ">{formatCardNumber(card.number)}</p>
             <Image
               src="/images/card-logo.svg"

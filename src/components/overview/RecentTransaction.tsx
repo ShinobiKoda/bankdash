@@ -31,9 +31,9 @@ export default function RecentTransaction() {
      animate={{opacity: 1, x: 0}}
      transition={{duration: 0.8}}
      >
-      <h1 className="font-semibold text-xl text-[#343C6A]">
+      <h2 className="font-semibold text-xl text-[#343C6A]">
         Recent Transaction
-      </h1>
+      </h2>
       <div className="w-full flex flex-col gap-5">
         {transactions ? (
           transactions.map((transaction, index) => {

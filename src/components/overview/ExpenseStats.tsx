@@ -72,20 +72,18 @@ export default function ExpenseStats() {
       transition={{ duration: 0.5 }}
     >
       <Card className="flex flex-col">
-        <CardHeader className="items-center pb-0 text-[#343C6A] font-semibold text-2xl justify-start">
-          Expense Statistics
-        </CardHeader>
+        <h2 className="font-semibold text-xl text-[#343C6A]">Expense Statistics</h2>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square max-h-[400px] [&_.recharts-text]:fill-background"
+            className="mx-auto aspect-square max-h-[300px] [&_.recharts-text]:fill-background"
           >
             <PieChart>
               <ChartTooltip
                 content={<ChartTooltipContent nameKey="category" hideLabel />}
               />
               <Pie data={chartData} dataKey="value" nameKey="category"
-              cx="50%" cy="50%" outerRadius={130}
+              cx="50%" cy="50%" outerRadius={110}
               paddingAngle={4}
               > 
                 <LabelList

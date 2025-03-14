@@ -61,7 +61,7 @@ export default function WeelyActivity() {
         </div>
       </div>
       {activities.length > 0 && (
-        <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[400px] w-full">
+        <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[400px] w-full flex justify-center items-center">
           <BarChart accessibilityLayer data={activities}>
             <CartesianGrid vertical={false} />
             <XAxis
