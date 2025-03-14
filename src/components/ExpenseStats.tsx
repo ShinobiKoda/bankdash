@@ -4,6 +4,7 @@ import { TrendingUp } from "lucide-react";
 import { LabelList, Pie, PieChart } from "recharts";
 import { fetchUserData } from "@/lib/api";
 import type { ExpenseItem } from "@/types/types";
+import { motion } from "framer-motion";
 
 import {
   Card,
@@ -44,7 +45,7 @@ export default function ExpenseStats() {
 
   const chartConfig = {
     catergory: {
-      label: "Category"
+      label: "Category",
     },
     entertainment: {
       label: "Entertainment",
@@ -65,35 +66,42 @@ export default function ExpenseStats() {
   } satisfies ChartConfig;
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0 text-[#343C6A] font-semibold text-2xl">
-        Expense Statistics
-      </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[400px] [&_.recharts-text]:fill-background"
-        >
-          <PieChart>
-            <ChartTooltip
-              content={<ChartTooltipContent nameKey="category" hideLabel />}
-            />
-            <Pie data={chartData} dataKey="value" nameKey="">
-              <LabelList
-                dataKey="category"
-                className="fill-background font-bold text-lg"
-                stroke="none"
-                fontSize={12}
-                position="inside"
-                formatter={(value: keyof typeof chartConfig) =>
-                  chartConfig[value]?.label
-                }
+    <motion.div
+      initial={{ x: 20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Card className="flex flex-col">
+        <CardHeader className="items-center pb-0 text-[#343C6A] font-semibold text-2xl justify-start">
+          Expense Statistics
+        </CardHeader>
+        <CardContent className="flex-1 pb-0">
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[400px] [&_.recharts-text]:fill-background"
+          >
+            <PieChart>
+              <ChartTooltip
+                content={<ChartTooltipContent nameKey="category" hideLabel />}
               />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
-  
-    </Card>
+              <Pie data={chartData} dataKey="value"
+              cx="50%" cy="50%" outerRadius={130}
+              > 
+                <LabelList
+                  dataKey="category"
+                  className="fill-background font-bold text-lg"
+                  stroke="none"
+                  fontSize={12}
+                  position="inside"
+                  formatter={(value: keyof typeof chartConfig) =>
+                    chartConfig[value]?.label
+                  }
+                />
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }

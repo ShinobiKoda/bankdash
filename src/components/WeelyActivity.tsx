@@ -5,6 +5,7 @@ import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { fetchUserData } from "@/lib/api";
 import type { Activity } from "@/types/types"; 
+import { motion} from "framer-motion"
 
 
 
@@ -39,7 +40,12 @@ export default function WeelyActivity() {
 
 
   return (
-    <section className="w-full mx-auto flex flex-col gap-1">
+    <motion.section 
+      initial={{x:-20, opacity: 0}}
+      animate={{x: 0, opacity: 1}}
+      transition={{duration: 0.5}}
+    
+    className="w-full mx-auto flex flex-col gap-1">
       <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">Weekly Activity</h2>
       <div className="flex gap-2 w-full items-center justify-end">
         <div className="flex items-center gap-2">
@@ -68,6 +74,6 @@ export default function WeelyActivity() {
           </BarChart>
         </ChartContainer>
       )}
-    </section>
+    </motion.section>
   );
 }
