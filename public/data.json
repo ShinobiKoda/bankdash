@@ -30,7 +30,7 @@
       "number": "3344134519987653",
       "name": "Gojo Satoru",
       "valid_thru": "12/01",
-      "balance": 90336,
+      "balance": 900336,
       "bank": "ABM"
     }
   ],
@@ -91,10 +91,10 @@
       "withdrawal": 330
     }
   ],
-  "expense_stats": {
-    "entertainment": "30%",
-    "bill_expense": "15%",
-    "others": "35%",
-    "investment": "20%"
-  }
+  "expense_stats": [
+    { "category": "entertainment", "value": 30, "fill": "#343C6A" },
+    { "category": "bill_expense", "value": 15, "fill": "#FC7900" },
+    { "category": "others", "value": 35, "fill": "#1814F3" },
+    { "category": "investment", "value": 20, "fill": "#FA00FF" }
+  ]
 }

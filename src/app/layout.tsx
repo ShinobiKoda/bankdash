@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-inter'
-})
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Bank Dash",
@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={` ${inter.variable} antialiased`}
-      >
+      <body className={` ${inter.variable} antialiased font-sans`}>
         {children}
       </body>
     </html>

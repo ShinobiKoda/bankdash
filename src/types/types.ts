@@ -8,12 +8,7 @@ export interface User{
   credit_cards: CreditCard[]
   recent_transactions: Transaction[];
   weekly_activities: Activity[];
-  expense_stats: {
-    entertainment: string
-    bill_expense: string
-    others: string
-    investment: string
-  }
+  expense_stats: ExpenseItem[];
 }
 
 export interface Location{
@@ -44,3 +39,16 @@ export interface Activity{
   deposit: number
   withdrawal: number
 }
+
+export interface Expenses{
+  entertainment: string
+  bill_expense: string
+  others: string
+  investment: string
+}
+
+export interface ExpenseItem {
+  category: string;
+  value: number;
+}
+

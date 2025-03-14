@@ -39,10 +39,20 @@ export default function WeelyActivity() {
 
 
   return (
-    <section className="w-full max-w-[600px] mb-[30rem] mx-auto">
+    <section className="w-full mx-auto flex flex-col gap-1">
       <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">Weekly Activity</h2>
+      <div className="flex gap-2 w-full items-center justify-end">
+        <div className="flex items-center gap-2">
+          <div className="h-3 w-3 bg-[#16DBCC] rounded-full"></div>
+          <span>Deposit</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-3 w-3 bg-[#1814F3] rounded-full"></div>
+          <span>Widthraw</span>
+        </div>
+      </div>
       {activities.length > 0 && (
-        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[400px] w-full">
           <BarChart accessibilityLayer data={activities}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -50,7 +60,7 @@ export default function WeelyActivity() {
               tickLine={true}
               tickMargin={10}
               axisLine={true}
-              tickFormatter={(value) => value.slice(0, 3)} // Abbreviate days
+              tickFormatter={(value) => value.slice(0, 3)}
             />
             <YAxis tickLine={true} tickMargin={10} axisLine={true} />
             <Bar dataKey="withdrawal" fill="#1814F3" radius={4} />
