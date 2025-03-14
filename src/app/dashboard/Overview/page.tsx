@@ -13,7 +13,7 @@ export default function page() {
         <RecentTransaction />
       </div>
       <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[2fr_1fr]">
-        {/* <WeelyActivity /> */}
+        <WeelyActivity />
         <ExpenseStats />
       </div>
       <div className="w-full">
