@@ -84,18 +84,19 @@ export default function ExpenseStats() {
               <ChartTooltip
                 content={<ChartTooltipContent nameKey="category" hideLabel />}
               />
-              <Pie data={chartData} dataKey="value"
+              <Pie data={chartData} dataKey="value" nameKey="category"
               cx="50%" cy="50%" outerRadius={130}
+              paddingAngle={4}
               > 
                 <LabelList
                   dataKey="category"
+                  angle={39}
                   className="fill-background font-bold text-lg"
                   stroke="none"
                   fontSize={12}
                   position="inside"
                   formatter={(value: keyof typeof chartConfig) =>
-                    chartConfig[value]?.label
-                  }
+                    chartConfig[value]?.label}
                 />
               </Pie>
             </PieChart>
