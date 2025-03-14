@@ -13,9 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <AppSidebar />
 
       {/* Main Content Area */}
-      <div className="flex-1 min-h-screen bg-white lg:ml-[16rem]">
+      <div className="flex-1 min-h-screen lg:ml-[16rem]">
         <Header />
-        <div className="px-4">{children}</div>
+        <div className="px-4 lg:px-8">{children}</div>
       </div>
     </SidebarProvider>
   );

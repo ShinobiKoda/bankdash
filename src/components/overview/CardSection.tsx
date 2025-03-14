@@ -12,7 +12,7 @@ export default function CardSection() {
       transition={{ duration: 0.5 }}
       className="flex flex-col gap-3 w-full"
     >
-      <header className="flex items-center justify-between w-full">
+      <header className="flex items-center justify-between w-fullz">
         <h3 className="font-semibold text-xl text-[#343C6A]">My cards</h3>
         <button className="hover:opacity-90 cursor-pointer text-[#343C6A]">See All</button>
       </header>

@@ -31,10 +31,10 @@ export default function RecentTransaction() {
      animate={{opacity: 1, x: 0}}
      transition={{duration: 0.8}}
      >
-      <h2 className="font-semibold text-xl text-[#343C6A]">
+      <h2 className="font-semibold text-xl text-[#343C6A]z">
         Recent Transaction
       </h2>
-      <div className="w-full flex flex-col gap-5">
+      <div className="w-full flex flex-col gap-9">
         {transactions ? (
           transactions.map((transaction, index) => {
 
@@ -47,7 +47,7 @@ export default function RecentTransaction() {
             return (
               <div className="w-full flex items-center justify-between" key={index}>
                 <div className="flex items-center gap-3">
-                  <div className="h-16 w-16 bg-[#FFF5D9] flex items-center justify-center rounded-full">
+                  <div className="h-12 w-12 bg-[#FFF5D9] flex items-center justify-center rounded-full">
                     <Icon  color={iconColor}/>
                   </div>
                   <p className="flex flex-col">

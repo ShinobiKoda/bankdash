@@ -33,9 +33,9 @@ export default function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full flex flex-col gap-4 px-4 py-5"
+      className="w-full flex flex-col gap-4 px-4 py-5 lg:px-8"
     >
-      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4">
+      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4 bg-white">
         <div className="w-full flex items-center justify-between">
           <button
             className="flex flex-col justify-center items-center w-10 h-10 p-2 lg:hidden"
