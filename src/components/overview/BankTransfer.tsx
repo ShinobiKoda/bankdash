@@ -1,13 +1,10 @@
 "use client"
 
-import React from 'react'
-import type { Transfer } from '@/types/types'
-import {useState, useEffect} from 'react';
-import { fetchUserData } from '@/lib/api';
-
-
 import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
+
+import type { Transfer } from "@/types/types"
+import { fetchUserData } from "@/lib/api"
 
 import {
   Card,
@@ -23,26 +20,23 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-
-
+import { useState, useEffect } from "react"
 
 export default function BankTransfer() {
-
   const [transfers, setTransfers] = useState<Transfer[]>([]);
 
   const getUserTransfers = async() => {
     try{
       const user = await fetchUserData();
-      setTransfers(user.money_transfers)
+      setTransfers(user.money_transfers);
     }catch(error){
-      console.log("Error fetching transfers", error);
-      return[]
+      console.log("Failed to fetch data", error);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getUserTransfers();
-  }, [])
+  }, []);
 
   const chartData = transfers;
 
@@ -52,42 +46,49 @@ export default function BankTransfer() {
       color: "hsl(var(--chart-1))",
     },
   } satisfies ChartConfig
-  
+
 
   return (
-      <Card>
-        <CardContent>
-          <ChartContainer config={chartConfig}>
-            <LineChart
-              accessibilityLayer
-              data={transfers}
-              margin={{
-                left: 12,
-                right: 12,
-              }}
-            >
-              <CartesianGrid vertical={false} />
-              <XAxis
-                dataKey="month"
-                tickLine={false}
-                axisLine={false}
-                tickMargin={8}
-                tickFormatter={(value) => value.slice(0, 3)}
-              />
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
-              <Line
-                dataKey="amount_transferred"
-                type="natural"
-                stroke="var(--color-desktop)"
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ChartContainer>
-        </CardContent>
-      </Card>
-    )
+    <Card>
+      <CardContent>
+      {chartData.length > 0 ? (
+        <ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+          <LineChart
+            accessibilityLayer
+            data={chartData}
+            margin={{
+              left: 12,
+              right: 12,
+            }}
+          >
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <YAxis 
+              axisLine={true}
+            />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Line
+              dataKey="amount_transferred"
+              type="natural"
+              stroke="#1814F3"
+              strokeWidth={5}
+              dot={false}
+            />
+          </LineChart>
+        </ChartContainer>
+      ) : (
+        <p>Loading chart...</p>
+      )}
+      </CardContent>
+    </Card>
+  )
 }

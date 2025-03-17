@@ -77,7 +77,7 @@ export default function ExpenseStats() {
         <CardContent className="flex-1 pb-0">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square [&_.recharts-text]:fill-background lg:flex lg:items-center lg:justify-center"
+            className="mx-auto aspect-square max-h-[450px] [&_.recharts-text]:fill-background"
           >
             <PieChart>
               <ChartTooltip

@@ -5,19 +5,20 @@ import RecentTransaction from "@/components/overview/RecentTransaction";
 import WeelyActivity from "@/components/overview/WeelyActivity";
 import BankTransfer from "@/components/overview/BankTransfer";
 import React from "react";
+import { Component } from "@/components/dummy";
 
 export default function page() {
   return (
-    <div className="flex flex-col gap-7 mb-[20rem]">
+    <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr]">
         <CardSection />
         <RecentTransaction />
       </div>
-      <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr] items-center">
+      <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr]">
         <WeelyActivity />
         <ExpenseStats />
       </div>
-      <div className="w-full">
+      <div className="w-full flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_3fr]">
         <QuickTransfer />
         <BankTransfer />
       </div>

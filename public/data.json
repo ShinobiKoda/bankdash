@@ -97,7 +97,7 @@
     { "category": "others", "value": 35, "fill": "#1814F3" },
     { "category": "investment", "value": 20, "fill": "#FA00FF" }
   ],
-  "money-transfers": [
+  "money_transfers": [
     {
       "month": "July",
       "amount_transferred": 300
