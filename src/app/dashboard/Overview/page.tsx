@@ -3,6 +3,7 @@ import ExpenseStats from "@/components/overview/ExpenseStats";
 import QuickTransfer from "@/components/overview/QuickTransfer";
 import RecentTransaction from "@/components/overview/RecentTransaction";
 import WeelyActivity from "@/components/overview/WeelyActivity";
+import BankTransfer from "@/components/overview/BankTransfer";
 import React from "react";
 
 export default function page() {
@@ -18,6 +19,7 @@ export default function page() {
       </div>
       <div className="w-full">
         <QuickTransfer />
+        <BankTransfer />
       </div>
     </div>
   );

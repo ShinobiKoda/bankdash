@@ -70,6 +70,7 @@ export default function ExpenseStats() {
       initial={{ x: 20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
+      className="max-h-[400px]"
     >
       <Card className="flex flex-col">
         <h2 className="font-semibold text-xl text-[#343C6A]">Expense Statistics</h2>

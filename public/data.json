@@ -96,5 +96,35 @@
     { "category": "bill_expense", "value": 15, "fill": "#FC7900" },
     { "category": "others", "value": 35, "fill": "#1814F3" },
     { "category": "investment", "value": 20, "fill": "#FA00FF" }
+  ],
+  "money-transfers": [
+    {
+      "month": "July",
+      "amount_transferred": 300
+    },
+    {
+      "month": "August",
+      "amount_transferred": 200
+    },
+    {
+      "month": "September",
+      "amount_transferred": 450
+    },
+    {
+      "month": "October",
+      "amount_transferred": 780
+    },
+    {
+      "month": "November",
+      "amount_transferred": 200
+    },
+    {
+      "month": "December",
+      "amount_transferred": 590
+    },
+    {
+      "month": "January",
+      "amount_transferred": 600
+    }
   ]
 }
