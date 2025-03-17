@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/chart"
 
 
+
 export default function BankTransfer() {
 
   const [transfers, setTransfers] = useState<Transfer[]>([]);
@@ -43,9 +44,50 @@ export default function BankTransfer() {
     getUserTransfers();
   }, [])
 
+  const chartData = transfers;
+
+  const chartConfig = {
+    amount_transferred: {
+      label: "Amount",
+      color: "hsl(var(--chart-1))",
+    },
+  } satisfies ChartConfig
+  
+
   return (
-    <div>
-      
-    </div>
-  )
+      <Card>
+        <CardContent>
+          <ChartContainer config={chartConfig}>
+            <LineChart
+              accessibilityLayer
+              data={transfers}
+              margin={{
+                left: 12,
+                right: 12,
+              }}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Line
+                dataKey="amount_transferred"
+                type="natural"
+                stroke="var(--color-desktop)"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+    )
 }
