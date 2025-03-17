@@ -15,7 +15,7 @@ export default function RecentTransaction() {
       const user = await fetchUserData();
       setTransactions(user.recent_transactions);
     } catch (error) {
-      console.log("Failed to fetch user data");
+      console.log("Failed to fetch user data", error);
       return [];
     }
   };

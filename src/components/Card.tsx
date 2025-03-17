@@ -14,7 +14,7 @@ export default function Credit_Card() {
       const user = await fetchUserData();
       setCards(user.credit_cards);
     } catch (error) {
-      console.log("Failed to load user data");
+      console.log("Failed to load user data", error);
       return [];
     }
   };

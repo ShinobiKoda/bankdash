@@ -20,7 +20,7 @@ export default function WeelyActivity() {
       const user = await fetchUserData();
       setActivities(user.weekly_activities);
     } catch (error) {
-      console.log("Failed to fetch user activities");
+      console.log("Failed to fetch user activities", error);
       return [];
     }
   };

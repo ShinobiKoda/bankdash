@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { LabelList, Pie, PieChart } from "recharts";
 import { fetchUserData } from "@/lib/api";
 import type { ExpenseItem } from "@/types/types";
@@ -9,10 +8,7 @@ import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+
 } from "@/components/ui/card";
 
 import {

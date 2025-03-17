@@ -185,7 +185,7 @@ export function AppSidebar() {
                               ? "text-[#AC39D4]"
                               : "text-[#B1B1B1]"
                           }`}
-                          onClick={(e) => {
+                          onClick={() => {
                             if (!isLargeScreen) {
                               // Prevent unnecessary toggling if sidebar is already closing due to overlay
                               setTimeout(() => toggleSidebar(), 100);

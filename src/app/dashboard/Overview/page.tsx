@@ -5,7 +5,6 @@ import RecentTransaction from "@/components/overview/RecentTransaction";
 import WeelyActivity from "@/components/overview/WeelyActivity";
 import BankTransfer from "@/components/overview/BankTransfer";
 import React from "react";
-import { Component } from "@/components/dummy";
 
 export default function page() {
   return (
