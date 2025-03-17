@@ -2,31 +2,30 @@
 
 import React, { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import {ChartConfig,
+import {
+  ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent, } from "@/components/ui/chart";
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { fetchUserData } from "@/lib/api";
-import type { Activity } from "@/types/types"; 
-import { motion} from "framer-motion"
-
-
+import type { Activity } from "@/types/types";
+import { motion } from "framer-motion";
 
 export default function WeelyActivity() {
-
   const [activities, setActivities] = useState<Activity[]>([]);
 
-  const getUserActivity = async() => {
-    try{
+  const getUserActivity = async () => {
+    try {
       const user = await fetchUserData();
       setActivities(user.weekly_activities);
-    }catch(error){
+    } catch (error) {
       console.log("Failed to fetch user activities");
       return [];
     }
-  }
+  };
 
-  useEffect(()=> {
+  useEffect(() => {
     getUserActivity();
   }, []);
 
@@ -41,15 +40,16 @@ export default function WeelyActivity() {
     },
   } satisfies ChartConfig;
 
-
   return (
-    <motion.section 
-      initial={{x:-20, opacity: 0}}
-      animate={{x: 0, opacity: 1}}
-      transition={{duration: 0.5}}
-    
-    className="w-full mx-auto flex flex-col gap-1">
-      <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">Weekly Activity</h2>
+    <motion.section
+      initial={{ x: -20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full mx-auto flex flex-col gap-1"
+    >
+      <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">
+        Weekly Activity
+      </h2>
       <div className="flex gap-2 w-full items-center justify-end">
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 bg-[#16DBCC] rounded-full"></div>
@@ -61,7 +61,10 @@ export default function WeelyActivity() {
         </div>
       </div>
       {activities.length > 0 && (
-        <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[400px] ml-[-2rem]">
+        <ChartContainer
+          config={chartConfig}
+          className="min-h-[200px] max-h-[400px] ml-[-2rem]"
+        >
           <BarChart accessibilityLayer data={activities}>
             <CartesianGrid vertical={false} />
             <XAxis

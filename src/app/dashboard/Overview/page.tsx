@@ -12,7 +12,7 @@ export default function page() {
         <CardSection />
         <RecentTransaction />
       </div>
-      <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr]">
+      <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr] items-center">
         <WeelyActivity />
         <ExpenseStats />
       </div>
