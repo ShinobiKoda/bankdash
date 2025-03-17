@@ -7,7 +7,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-7 mb-[20rem]">
       <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[3fr_1fr]">
         <CardSection />
         <RecentTransaction />
