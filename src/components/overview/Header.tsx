@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useSidebar } from "../ui/sidebar";
 
+import { Settings, BellDotIcon } from "lucide-react";
+
 export default function Header() {
   const pathname = usePathname();
 
@@ -36,7 +38,7 @@ export default function Header() {
       <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4 bg-white">
         <div className="w-full flex items-center justify-between">
           <button
-            className="flex flex-col justify-center items-center w-10 h-10 p-2 lg:hidden"
+            className="flex flex-col justify-between items-center w-9 h-9 p-2 lg:hidden"
             onClick={toggleSidebar}
           >
             <span
@@ -74,8 +76,12 @@ export default function Header() {
               className="bg-transparent outline-none border-none w-full"
             />
           </div>
-          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full lg:block hidden"></div>
-          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:block"></div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
+            <Settings className="text-[#718EBF]"/>
+          </div>
+          <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
+            <BellDotIcon className="text-[#FE5C73]"/>
+          </div>
           <div className="min-w-12 min-h-12 rounded-full overflow-hidden lg:block hidden">
             <Image
               src={"/images/profile-pic.svg"}

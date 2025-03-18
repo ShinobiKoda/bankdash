@@ -44,10 +44,10 @@ export default function BankTransfer() {
 
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardContent>
       {chartData.length > 0 ? (
-        <ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+        <ChartContainer config={chartConfig} className="max-h-[300px] w-full ml-[-4rem]">
           <LineChart
             accessibilityLayer
             data={chartData}
