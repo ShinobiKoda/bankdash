@@ -17,7 +17,7 @@ export default function page() {
         <WeelyActivity />
         <ExpenseStats />
       </div>
-      <div className="w-full flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_3fr]">
+      <div className="w-full flex flex-col gap-8 lg:grid lg:grid-cols-2">
         <QuickTransfer />
         <BankTransfer />
       </div>
