@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/chart";
 import { fetchUserData } from "@/lib/api";
 import type { Activity } from "@/types/types";
-import { motion } from "framer-motion";
 
 export default function WeelyActivity() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -41,10 +40,7 @@ export default function WeelyActivity() {
   } satisfies ChartConfig;
 
   return (
-    <motion.section
-      initial={{ x: -20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
+    <section
       className="w-full mx-auto flex flex-col gap-1"
     >
       <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">
@@ -81,6 +77,6 @@ export default function WeelyActivity() {
           </BarChart>
         </ChartContainer>
       )}
-    </motion.section>
+    </section>
   );
 }

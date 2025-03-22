@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { useSidebar } from "../ui/sidebar";
 
 import { Settings, BellDotIcon } from "lucide-react";
@@ -25,16 +24,10 @@ export default function Header() {
 
   const title = pageTitles[pathname] || "Dashboard";
 
-
   const { toggleSidebar } = useSidebar();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="w-full flex flex-col gap-4 px-4 py-5 lg:px-8"
-    >
+    <div className="w-full flex flex-col gap-4 px-4 py-5 lg:px-8">
       <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4 bg-white">
         <div className="w-full flex items-center justify-between">
           <button
@@ -77,10 +70,10 @@ export default function Header() {
             />
           </div>
           <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
-            <Settings className="text-[#718EBF]"/>
+            <Settings className="text-[#718EBF]" />
           </div>
           <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
-            <BellDotIcon className="text-[#FE5C73]"/>
+            <BellDotIcon className="text-[#FE5C73]" />
           </div>
           <div className="min-w-12 min-h-12 rounded-full overflow-hidden lg:block hidden">
             <Image
@@ -92,6 +85,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-    </motion.div>
+    </div>
   );
 }

@@ -3,7 +3,6 @@
 import { LabelList, Pie, PieChart } from "recharts";
 import { fetchUserData } from "@/lib/api";
 import type { ExpenseItem } from "@/types/types";
-import { motion } from "framer-motion";
 
 import {
   Card,
@@ -62,10 +61,8 @@ export default function ExpenseStats() {
   } satisfies ChartConfig;
 
   return (
-    <motion.div
-      initial={{ x: 20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
+    <div
+     
       className="max-h-[400px]"
     >
       <Card className="flex flex-col">
@@ -98,6 +95,6 @@ export default function ExpenseStats() {
           </ChartContainer>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   );
 }

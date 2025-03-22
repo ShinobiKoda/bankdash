@@ -1,5 +1,6 @@
 "use client"
 
+import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import type { Transfer } from "@/types/types"
@@ -8,6 +9,10 @@ import { fetchUserData } from "@/lib/api"
 import {
   Card,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card"
 import {
   ChartConfig,
@@ -44,10 +49,10 @@ export default function BankTransfer() {
 
 
   return (
-    <Card className="w-full">
+    <Card>
       <CardContent>
       {chartData.length > 0 ? (
-        <ChartContainer config={chartConfig} className="max-h-[300px] w-full ml-[-4rem]">
+        <ChartContainer config={chartConfig} className="max-h-[300px] w-full">
           <LineChart
             accessibilityLayer
             data={chartData}
