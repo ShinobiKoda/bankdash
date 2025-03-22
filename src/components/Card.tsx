@@ -39,12 +39,12 @@ export default function Credit_Card() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Carousel className="w-full max-w-sm lg:max-w-full md:max-w-full">
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="-ml-4 w-full">
           {cards.map((card, index) => (
             <CarouselItem
-              className="pl-4 basis-[85%] md:basis-[60%]"
+              className="pl-4 basis-[85%] md:basis-[40%] lg:basis-1/3"
               key={card.number}
             >
               <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-4 overflow-hidden">
@@ -76,7 +76,7 @@ export default function Credit_Card() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between bg-gradient-to-r from-white/10 to-white/10 backdrop-blur-lg p-3 w-full">
+                <div className="flex items-center justify-between bg-gradient-to-r from-white/10 to-white/10 p-3 w-full">
                   <p className="text-xl ">{formatCardNumber(card.number)}</p>
                   <Image
                     src="/images/card-logo.svg"

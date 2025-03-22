@@ -49,8 +49,8 @@ export default function BankTransfer() {
 
 
   return (
-    <Card>
-      <CardContent>
+    <Card className="w-full">
+      <CardContent className="w-full -ml-12">
       {chartData.length > 0 ? (
         <ChartContainer config={chartConfig} className="max-h-[300px] w-full">
           <LineChart

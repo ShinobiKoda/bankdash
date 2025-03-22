@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { CreditCard, CoinsIcon } from "lucide-react";
 import { fetchUserData } from "@/lib/api";
 import type { Transaction } from "@/types/types";
-import { motion } from "framer-motion";
 
 export default function RecentTransaction() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -25,30 +24,27 @@ export default function RecentTransaction() {
   }, []);
 
   return (
-    <motion.section
-     className="flex flex-col gap-4"
-     initial={{opacity: 0, x: 30}}
-     animate={{opacity: 1, x: 0}}
-     transition={{duration: 0.8}}
-     >
+    <section className="flex flex-col gap-4">
       <h2 className="font-semibold text-xl text-[#343C6A]z">
         Recent Transaction
       </h2>
       <div className="w-full flex flex-col gap-9">
         {transactions ? (
           transactions.map((transaction, index) => {
-
-              const isDebit = transaction.type === "debit";
-              const amountColor = isDebit ? "text-[#FF4B4A]" : "text-[#41D4A8]";
-              const amountSign = isDebit ? "-" : "+";
-              const iconColor = isDebit ? "#FF4B4A" : "#41D4A8"
-              const Icon = isDebit ? CreditCard : CoinsIcon
+            const isDebit = transaction.type === "debit";
+            const amountColor = isDebit ? "text-[#FF4B4A]" : "text-[#41D4A8]";
+            const amountSign = isDebit ? "-" : "+";
+            const iconColor = isDebit ? "#FF4B4A" : "#41D4A8";
+            const Icon = isDebit ? CreditCard : CoinsIcon;
 
             return (
-              <div className="w-full flex items-center justify-between" key={index}>
+              <div
+                className="w-full flex items-center justify-between"
+                key={index}
+              >
                 <div className="flex items-center gap-3">
                   <div className="h-12 w-12 bg-[#FFF5D9] flex items-center justify-center rounded-full">
-                    <Icon  color={iconColor}/>
+                    <Icon color={iconColor} />
                   </div>
                   <p className="flex flex-col">
                     <span className="font-medium">
@@ -57,7 +53,9 @@ export default function RecentTransaction() {
                     <span className="text-[#718EBF]">{transaction.date}</span>
                   </p>
                 </div>
-                <p className={`font-medium ${amountColor}`}>{amountSign}${transaction.amount}</p>
+                <p className={`font-medium ${amountColor}`}>
+                  {amountSign}${transaction.amount}
+                </p>
               </div>
             );
           })
@@ -65,6 +63,6 @@ export default function RecentTransaction() {
           <p>No transactions</p>
         )}
       </div>
-    </motion.section>
+    </section>
   );
 }
