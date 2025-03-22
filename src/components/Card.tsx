@@ -42,7 +42,7 @@ export default function Credit_Card() {
     <div className="w-full">
       <Carousel className="w-full max-w-sm lg:max-w-full md:max-w-full">
         <CarouselContent className="-ml-4 w-full">
-          {cards.map((card, index) => (
+          {cards.map((card) => (
             <CarouselItem
               className="pl-4 basis-[85%] md:basis-[40%] lg:basis-1/3"
               key={card.number}

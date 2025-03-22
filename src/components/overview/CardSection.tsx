@@ -2,7 +2,6 @@
 
 import React from "react";
 import Credit_Card from "../Card";
-import { motion } from "framer-motion";
 
 export default function CardSection() {
   return (

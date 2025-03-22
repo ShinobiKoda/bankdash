@@ -1,6 +1,5 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import type { Transfer } from "@/types/types"
@@ -9,10 +8,6 @@ import { fetchUserData } from "@/lib/api"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import {
   ChartConfig,
