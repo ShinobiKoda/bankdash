@@ -44,7 +44,9 @@ export default function BankTransfer() {
 
 
   return (
-    <Card className="w-full">
+    <section className="flex flex-col gap-6">
+      <h2 className="font-semibold text-xl text-[#343C6A]">Bank Transfer</h2>
+      <Card className="w-full">
       <CardContent className="w-full -ml-12">
       {chartData.length > 0 ? (
         <ChartContainer config={chartConfig} className="max-h-[300px] w-full">
@@ -85,5 +87,6 @@ export default function BankTransfer() {
       )}
       </CardContent>
     </Card>
+    </section>
   )
 }

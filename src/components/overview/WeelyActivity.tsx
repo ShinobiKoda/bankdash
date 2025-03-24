@@ -53,7 +53,7 @@ export default function WeelyActivity() {
         </div>
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 bg-[#1814F3] rounded-full"></div>
-          <span>Widthraw</span>
+          <span>Withdraw</span>
         </div>
       </div>
       {activities.length > 0 && (

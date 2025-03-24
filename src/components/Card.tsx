@@ -35,12 +35,12 @@ export default function Credit_Card() {
     const lastFour = number.slice(-4);
     const masked = "**** **** ****"; // Adjust based on total length
 
-    return `${firstFour} ${masked} ${lastFour}`;
+    return `${firstFour} ${masked}`;
   };
 
   return (
     <div className="w-full">
-      <Carousel className="w-full max-w-sm lg:max-w-full md:max-w-full">
+      <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
         <CarouselContent className="-ml-4 w-full">
           {cards.map((card) => (
             <CarouselItem
