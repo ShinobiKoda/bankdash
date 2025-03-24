@@ -32,7 +32,6 @@ export default function Credit_Card() {
     if (!number || number.length < 8) return number; // Handle invalid numbers
 
     const firstFour = number.slice(0, 4);
-    const lastFour = number.slice(-4);
     const masked = "**** **** ****"; // Adjust based on total length
 
     return `${firstFour} ${masked}`;
