@@ -129,27 +129,27 @@
   ],
   "expenses": [
     {
-      "month": "August",
+      "month": "October",
       "amount": 10000
     },
     {
-      "month": "September",
+      "month": "November",
       "amount": 20000
     },
     {
-      "month": "October",
+      "month": "December",
       "amount": 12000
     },
     {
-      "month": "November",
+      "month": "January",
       "amount": 30000
     },
     {
-      "month": "December",
+      "month": "February",
       "amount": 23000
     },
     {
-      "month": "January",
+      "month": "March",
       "amount": 25000
     }
   ]
