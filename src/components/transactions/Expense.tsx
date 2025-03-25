@@ -50,7 +50,7 @@ export default function Expense() {
   return (
     <section className="flex flex-col gap-6">
       <h2 className="font-semibold text-lg text-[#343C6A]">My Expense</h2>
-      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+      <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[300px] w-full ml-[-1rem]">
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
           <XAxis
