@@ -11,16 +11,19 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-export default function Credit_Card() {
+export default function Credit_Card({
+  newCard,
+}: {
+  newCard: CreditCard | null;
+}) {
   const [cards, setCards] = useState<CreditCard[]>([]);
 
-  const getUserCard = async () => {
+  const getUserCard = async (): Promise<void> => {
     try {
       const user = await fetchUserData();
       setCards(user.credit_cards);
     } catch (error) {
       console.log("Failed to load user data", error);
-      return [];
     }
   };
 
@@ -28,7 +31,13 @@ export default function Credit_Card() {
     getUserCard();
   }, []);
 
-  const formatCardNumber = (number: string) => {
+  useEffect(() => {
+    if (newCard) {
+      setCards((prevCards) => [...prevCards, newCard]);
+    }
+  }, [newCard]);
+
+  const formatCardNumber = (number: string): string => {
     if (!number || number.length < 8) return number; // Handle invalid numbers
 
     const firstFour = number.slice(0, 4);

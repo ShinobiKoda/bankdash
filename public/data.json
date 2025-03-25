@@ -126,5 +126,33 @@
       "month": "January",
       "amount_transferred": 600
     }
+  ],
+  "expenses": [
+    {
+      "month": "August",
+      "amount": 10000
+    },
+    {
+      "month": "September",
+      "amount": 20000
+    },
+    {
+      "month": "October",
+      "amount": 120000
+    },
+    {
+      "month": "November",
+      "amount": 30000
+    },
+    {
+      "month": "December",
+      "amount": 23000
+    },
+    {
+      "month": "January",
+      "amount": 12500
+    }
   ]
+
+  
 }

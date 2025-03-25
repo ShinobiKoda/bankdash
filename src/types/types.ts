@@ -10,6 +10,7 @@ export interface User{
   weekly_activities: Activity[];
   expense_stats: ExpenseItem[];
   money_transfers: Transfer[];
+  expenses: Expense[];
 }
 
 export interface Location{
@@ -58,3 +59,7 @@ export interface Transfer{
   amount_transferred: number
 }
 
+export interface Expense{
+  month: string
+  amount: number
+}
