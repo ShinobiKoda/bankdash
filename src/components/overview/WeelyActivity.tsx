@@ -29,7 +29,7 @@ export default function WeelyActivity() {
   }, []);
 
   const chartConfig = {
-    deposits: {
+    deposit: {
       label: "Deposits",
       color: "#16a34a",
     },
@@ -70,7 +70,7 @@ export default function WeelyActivity() {
               axisLine={true}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <YAxis tickLine={true} tickMargin={10} axisLine={true} />
+            <YAxis tickLine={true} tickMargin={10} axisLine={true} tickFormatter={(value) => `$${value.toLocaleString()}`}/>
             <ChartTooltip content={<ChartTooltipContent />} />
             <Bar dataKey="withdrawal" fill="#1814F3" radius={4} />
             <Bar dataKey="deposit" fill="#16DBCC" radius={4} />

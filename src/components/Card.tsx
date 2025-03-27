@@ -55,7 +55,7 @@ export default function Credit_Card({
               className="pl-4 basis-[85%] md:basis-[40%] lg:basis-1/3"
               key={card.number}
             >
-              <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-4 overflow-hidden">
+              <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
                 <div className="p-3 w-full flex flex-col gap-4">
                   <div className="flex items-center justify-between">
                     <p className="flex flex-col gap-1">
