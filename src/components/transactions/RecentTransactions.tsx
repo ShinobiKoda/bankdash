@@ -57,7 +57,10 @@ export default function RecentTransactions() {
               ? "text-[#1814F3] border-b-[#1814F3]"
               : "text-[#718EBF] border-b-transparent"
           }`}
-          onClick={() => setFilter("all")}
+          onClick={() => {
+            setFilter("all");
+            setCurrentPage(1);
+          }}
         >
           All Transactions
         </p>
@@ -67,7 +70,10 @@ export default function RecentTransactions() {
               ? "text-[#1814F3] border-b-[#1814F3]"
               : "text-[#718EBF] border-b-transparent"
           }`}
-          onClick={() => setFilter("income")}
+          onClick={() => {
+            setFilter("income");
+            setCurrentPage(1);
+          }}
         >
           Income
         </p>
@@ -77,7 +83,10 @@ export default function RecentTransactions() {
               ? "text-[#1814F3] border-b-[#1814F3]"
               : "text-[#718EBF] border-b-transparent"
           }`}
-          onClick={() => setFilter("expense")}
+          onClick={() => {
+            setFilter("expense");
+            setCurrentPage(1);
+          }}
         >
           Expense
         </p>
