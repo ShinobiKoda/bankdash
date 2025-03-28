@@ -203,7 +203,7 @@ export default function RecentTransactions() {
             className={`px-3 py-1 rounded ${
               currentPage === index + 1
                 ? "bg-[#1814F3] text-white"
-                : "bg-gray-200 text-black"
+                : "bg-none text-black"
             }`}
             onClick={() => setCurrentPage(index + 1)}
           >
