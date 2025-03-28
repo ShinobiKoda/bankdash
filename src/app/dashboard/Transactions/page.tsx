@@ -10,7 +10,7 @@ export default function page() {
       <AddCard/>
       <Expense />
       </div>
-      <div className='w-full flex flex-col lg:grid lg:grid-cols-[1fr_2fr] gap-6'>
+      <div className='w-full'>
         <RecentTransactions />
       </div>
     </div>

@@ -297,6 +297,12 @@
       "amount": 2000,
       "type": "credit"
     }
-  ]
+  ],
+  "account_overview": {
+    "balance": 12750,
+    "income": 5600,
+    "expenses": 3460,
+    "total_savings":7920
+  }
   
 }

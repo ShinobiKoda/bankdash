@@ -12,6 +12,7 @@ export interface User{
   money_transfers: Transfer[];
   expenses: Expense[];
   all_transactions: UnitTransaction[] 
+  account_overview: Overview;
 }
 
 export interface Location{
@@ -72,4 +73,11 @@ export interface UnitTransaction{
   time: string;
   amount: number;
   type: string
+}
+
+export interface Overview{
+  balance: number
+  income: number
+  expenses: number
+  total_savings: number
 }

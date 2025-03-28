@@ -50,7 +50,7 @@ export default function RecentTransactions() {
   return (
     <section className="flex flex-col gap-7 w-full mb-4">
       <h2 className="font-semibold text-lg">Recent Transactions</h2>
-      <div className="flex gap-3 items-center justify-between font-medium">
+      <div className="flex gap-3 items-center justify-between font-medium w-full max-w-[400px] *:hover:opacity-90 *:cursor-pointer">
         <p
           className={`pb-3 border-b-2 transition-all duration-300 ${
             filter === "all"
