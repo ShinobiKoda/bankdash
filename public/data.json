@@ -185,8 +185,113 @@
     {
       "description": "Emilly",
       "date": "14 Jan",
-      "time": "10:40 AM",
+      "time": "10:40AM",
       "amount": 840,
+      "type": "credit"
+    },
+    {
+      "description": "Netflix",
+      "date": "12 Jan",
+      "time": "01:30AM",
+      "amount": 1200,
+      "type": "debit"
+    },
+    {
+      "description": "Amazon Purchase",
+      "date": "11 Jan",
+      "time": "12:40PM",
+      "amount": 6000,
+      "type": "credit"
+    },
+    {
+      "description": "Starbucks",
+      "date": "08 Jan",
+      "time": "10:40PM",
+      "amount": 200,
+      "type": "credit"
+    },
+    {
+      "description": "Uber Eats",
+      "date": "07 Jan",
+      "time": "02:29PM",
+      "amount": 1590,
+      "type": "debit"
+    },
+    {
+      "description": "Grocery Shopping",
+      "date": "05 Jan",
+      "time": "11:55AM",
+      "amount": 1200,
+      "type": "debit"
+    },
+    {
+      "description": "Gas Station",
+      "date": "04 Jan",
+      "time": "10:00AM",
+      "amount": 500,
+      "type": "debit"
+    },
+    {
+      "description": "Restaurant",
+      "date": "02 Jan",
+      "time": "18:40PM",
+      "amount": 3000,
+      "type": "debit"
+    },
+    {
+      "description": "Gym Membership",
+      "date": "30 Dec",
+      "time": "07:00AM",
+      "amount": 1500,
+      "type": "debit"
+    },
+    {
+      "description": "Renzo",
+      "date": "28 Dec",
+      "time": "01:29PM",
+      "amount": 1200,
+      "type": "credit"
+    },
+    {
+      "description": "Xander",
+      "date": "26 Dec",
+      "time": "17:40AM",
+      "amount": 2000,
+      "type": "credit"
+    },
+    {
+      "description": "Car Insurance",
+      "date": "26 Dec",
+      "time": "10:40AM",
+      "amount": 1500,
+      "type": "credit"
+    },
+    {
+      "description": "Rent Payment",
+      "date": "25 Dec",
+      "time": "04:00PM",
+      "amount": 3000,
+      "type": "debit"
+    },
+    {
+      "description": "Electricity Bill",
+      "date": "25 Dec",
+      "time": "04:01PM",
+      "amount": 1500,
+      "type": "debit"
+    },
+    {
+      "description": "Water Bill",
+      "date": "25 Dec",
+      "time": "04:05PM",
+      "amount": 500,
+      "type": "debit"
+    },
+    {
+      "description": "Sales",
+      "date": "23 Dec",
+      "time": "10:40AM",
+      "amount": 2000,
       "type": "credit"
     }
   ]
