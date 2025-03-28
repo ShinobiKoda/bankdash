@@ -11,6 +11,7 @@ export interface User{
   expense_stats: ExpenseItem[];
   money_transfers: Transfer[];
   expenses: Expense[];
+  all_transactions: UnitTransaction[] 
 }
 
 export interface Location{
@@ -62,4 +63,12 @@ export interface Transfer{
 export interface Expense{
   month: string
   amount: number
+}
+
+export interface UnitTransaction{
+  description: string;
+  date: string;
+  time: string;
+  amount: number;
+  type: string
 }

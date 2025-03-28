@@ -152,7 +152,43 @@
       "month": "March",
       "amount": 25000
     }
+  ],
+  "all_transactions": [
+    {
+      "description": "Spotify Subscription",
+      "date": "28 Jan",
+      "time": "12:30AM",
+      "amount": 2500,
+      "type": "debit"
+    },
+    {
+      "description": "Freepik Sales",
+      "date": "25 Jan",
+      "time": "12:40PM",
+      "amount": 750,
+      "type": "credit"
+    },
+    {
+      "description": "Mobile Service",
+      "date": "20 Jan",
+      "time": "10:40AM",
+      "amount": 150,
+      "type": "debit"
+    },
+    {
+      "description": "Wilson",
+      "date": "15 Jan",
+      "time": "03:29PM",
+      "amount": 1050,
+      "type": "debit"
+    },
+    {
+      "description": "Emilly",
+      "date": "14 Jan",
+      "time": "10:40 AM",
+      "amount": 840,
+      "type": "credit"
+    }
   ]
-
   
 }
