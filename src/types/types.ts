@@ -35,6 +35,7 @@ export interface Transaction {
   date: string
   amount: number
   type: string
+  id: number;
 }
 
 export interface Activity{

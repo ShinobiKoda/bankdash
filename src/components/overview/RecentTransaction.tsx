@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 import { CreditCard, CoinsIcon } from "lucide-react";
 import { fetchUserData } from "@/lib/api";
 import type { Transaction } from "@/types/types";
+import { Skeleton } from "../ui/skeleton";
 
 export default function RecentTransaction() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const getUserTransaction = async () => {
     try {
@@ -16,6 +18,8 @@ export default function RecentTransaction() {
     } catch (error) {
       console.log("Failed to fetch user data", error);
       return [];
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -29,8 +33,25 @@ export default function RecentTransaction() {
         Recent Transaction
       </h2>
       <div className="w-full flex flex-col gap-9">
-        {transactions ? (
-          transactions.map((transaction, index) => {
+        {loading ? (
+          // Skeleton loader while loading
+          Array.from({ length: 3 }).map((_, index) => (
+            <div
+              className="w-full flex items-center justify-between"
+              key={`skeleton-${index}`} // Ensure unique and stable keys
+            >
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-12 w-12 rounded-full" />
+                <div className="flex flex-col gap-2">
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-3 w-24" />
+                </div>
+              </div>
+              <Skeleton className="h-4 w-16" />
+            </div>
+          ))
+        ) : transactions.length > 0 ? (
+          transactions.map((transaction) => {
             const isDebit = transaction.type === "debit";
             const amountColor = isDebit ? "text-[#FF4B4A]" : "text-[#41D4A8]";
             const amountSign = isDebit ? "-" : "+";
@@ -40,7 +61,7 @@ export default function RecentTransaction() {
             return (
               <div
                 className="w-full flex items-center justify-between"
-                key={index}
+                key={transaction.id} // Use a unique identifier from the transaction
               >
                 <div className="flex items-center gap-3">
                   <div className="h-12 w-12 bg-[#FFF5D9] flex items-center justify-center rounded-full">

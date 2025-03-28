@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Skeleton } from "../ui/skeleton";
 
 import {
   ChartConfig,

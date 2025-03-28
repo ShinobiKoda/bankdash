@@ -39,19 +39,22 @@
       "description": "Desposit from James",
       "date": "28 January 2025",
       "amount": 850,
-      "type": "debit"
+      "type": "debit",
+      "id": 1
     },
     {
       "description": "Paypal",
       "date": "25 January 2025",
       "amount": 2500,
-      "type": "credit"
+      "type": "credit",
+      "id": 2
     },
     {
       "description": "Jemi Wilson",
       "date": "21 January 2025",
       "amount": 5400,
-      "type": "credit"
+      "type": "credit",
+      "id": 3
     }
   ],
   "weekly_activities": [
