@@ -15,7 +15,7 @@ import {
 export default function Credit_Card({
   newCard,
 }: {
-  newCard: CreditCard | null;
+  newCard?: CreditCard | null;
 }) {
   const [cards, setCards] = useState<CreditCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

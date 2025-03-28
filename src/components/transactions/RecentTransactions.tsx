@@ -99,16 +99,13 @@ export default function RecentTransactions() {
             ))
           : currentTransactions.map((transaction, index) => {
               let icon;
-              let color;
-              let sign;
+              const color =
+                transaction.type === "debit" ? "#FE5C73" : "#16DBAA";
+              const sign = transaction.type === "debit" ? "-" : "+";
               if (transaction.type === "debit") {
                 icon = <ArrowUp className="w-[20px] hover:opacity-90" />;
-                color = "#FE5C73";
-                sign = "-";
               } else {
                 icon = <ArrowDown className="w-[20px] hover:opacity-90" />;
-                sign = "+";
-                color = "#16DBAA";
               }
 
               return (
@@ -157,9 +154,9 @@ export default function RecentTransactions() {
                   </tr>
                 ))
               : currentTransactions.map((transaction, index) => {
-                  let color =
+                  const color =
                     transaction.type === "debit" ? "#FE5C73" : "#16DBAA";
-                  let sign = transaction.type === "debit" ? "-" : "+";
+                  const sign = transaction.type === "debit" ? "-" : "+";
 
                   return (
                     <tr key={index} className="hover:bg-gray-50">

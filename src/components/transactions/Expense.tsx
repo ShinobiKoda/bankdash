@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Skeleton } from "../ui/skeleton";
 
 import {
   ChartConfig,
@@ -18,15 +17,14 @@ import { fetchUserData } from "@/lib/api";
 
 export default function Expense() {
   const [expense, setExpense] = useState<Expense[]>([]);
-  const [error, setError] = useState<string | null>(null);
 
   const getUserExpense = async () => {
     try {
-      setError(null); // Reset error state
+      
       const user = await fetchUserData();
       setExpense(user.expenses);
     } catch (error) {
-      setError("Failed to fetch expenses. Please try again later.");
+      console.log("Failed to fetch user data", error);
     }
   };
 
