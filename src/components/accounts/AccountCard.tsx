@@ -88,7 +88,10 @@ export default function AccountCard() {
           <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
             <CarouselContent>
               {cards.map((card, index) => (
-                <CarouselItem key={index} className="basis-[95%] lg:basis-[80%]">
+                <CarouselItem
+                  key={index}
+                  className="basis-[95%] lg:basis-[80%]"
+                >
                   <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
                     <div className="p-3 w-full flex flex-col gap-4">
                       <div className="flex items-center justify-between">
