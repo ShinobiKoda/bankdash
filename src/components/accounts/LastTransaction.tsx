@@ -17,12 +17,13 @@ export default function LastTransaction() {
       setTransactions(user.all_transactions);
     } catch (error) {
       console.log("Failed to fetch user transactions", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     getUserTransactions();
-    setLoading(false);
   }, []);
 
   const styles = [
@@ -53,31 +54,58 @@ export default function LastTransaction() {
     <section className="flex flex-col gap-4">
       <h2 className="font-semibold text-lg">Last Transaction</h2>
       <div className="flex flex-col gap-5">
-        {transactions.slice(0, 3).map((transaction, index) => {
-          const color = transaction.type === "debit" ? "#FE5C73" : "#16DBAA";
-          const sign = transaction.type === "debit" ? "-" : "+";
-
-          return (
-            <div key={index} className="flex items-center justify-between">
-              <div className="flex items-center gap-4 ">
-                <div
-                  className="w-[45px] h-[45px] rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: styles[index].bgcolor }}
-                >
-                  {styles[index].icon}
+        {loading
+          ? Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <Skeleton className="w-[45px] h-[45px] rounded-xl" />
+                  <div className="flex flex-col gap-1">
+                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="h-3 w-24" />
+                  </div>
                 </div>
-                <p className="flex flex-col gap-1">
-                  <span className="text-[#333B69] font-medium">{transaction.description}</span>
-                  <span className="text-[#718EBF]">{transaction.date}</span>
-                </p>
+                <Skeleton className="hidden lg:block h-4 w-20" />
+                <Skeleton className="hidden lg:block h-4 w-28" />
+                <Skeleton className="hidden lg:block h-4 w-16" />
+                <Skeleton className="h-4 w-12" />
               </div>
-              <p className="hidden text-[#718EBF] lg:block capitalize">{transaction.category}</p>
-              <p className="hidden text-[#718EBF] lg:block">{formatCardNumber(transaction.credit_card_used)}</p>
-              <p className="hidden text-[#718EBF] lg:block capitalize">{transaction.status}</p>
-              <p className="font-medium" style={{color: color}}>{sign}${transaction.amount}</p>
-            </div>
-          );
-        })}
+            ))
+          : transactions.slice(0, 3).map((transaction, index) => {
+              const color =
+                transaction.type === "debit" ? "#FE5C73" : "#16DBAA";
+              const sign = transaction.type === "debit" ? "-" : "+";
+
+              return (
+                <div key={index} className="flex items-center justify-between">
+                  <div className="flex items-center gap-4 ">
+                    <div
+                      className="w-[45px] h-[45px] rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: styles[index].bgcolor }}
+                    >
+                      {styles[index].icon}
+                    </div>
+                    <p className="flex flex-col gap-1">
+                      <span className="text-[#333B69] font-medium">
+                        {transaction.description}
+                      </span>
+                      <span className="text-[#718EBF]">{transaction.date}</span>
+                    </p>
+                  </div>
+                  <p className="hidden text-[#718EBF] lg:block capitalize">
+                    {transaction.category}
+                  </p>
+                  <p className="hidden text-[#718EBF] lg:block">
+                    {formatCardNumber(transaction.credit_card_used)}
+                  </p>
+                  <p className="hidden text-[#718EBF] lg:block capitalize">
+                    {transaction.status}
+                  </p>
+                  <p className="font-medium" style={{ color: color }}>
+                    {sign}${transaction.amount}
+                  </p>
+                </div>
+              );
+            })}
       </div>
     </section>
   );
