@@ -22,49 +22,58 @@ export default function AccountOverview() {
     getUserOverview();
   }, []);
 
+  const overview_stats = [
+    {
+      icon: <DollarSign className="text-[#FFBB38]"/>,
+      label: "My Balance",
+      value: overview?.balance.toLocaleString(),
+      color: "#FFF5D9",
+      bgColor: "#FFF5D9",
+    },
+    {
+      icon: <HandCoinsIcon className="text-[#396AFF]"/>,
+      label: "Income",
+      value: overview?.income.toLocaleString(),
+      color: "#E7EDFF",
+      bgColor: "#E7EDFF",
+    },
+    {
+      icon: <CoinsIcon className="text-[#FF82AC]"/>,
+      label: "Expense",
+      value: overview?.expenses.toLocaleString(),
+      color: "#FFE0EB",
+      bgColor: "#FFE0EB",
+    },
+    {
+      icon: <PiggyBankIcon className="text-[#16DBCC]"/>,
+      label: "Total Saving",
+      value: overview?.total_savings.toLocaleString(),
+      color: "#DCFAF8",
+      bgColor: "#DCFAF8",
+    }
+  ]
+
   return (
     <div>
       {overview && (
-        <div className="w-full grid grid-cols-2 gap-4">
-          <div className="flex items-center gap-3 shadow-lg rounded-sm p-6">
-            <div className="w-[35px] h-[35px] p-2 rounded-full bg-[#FFF5D9] flex items-center justify-center">
-              <DollarSign className="text-[#FFBB38]"/>
+        <div className="w-full grid grid-cols-2 gap-4 lg:flex lg:items-center lg:justify-between">
+          {overview_stats.map((stat, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-4 py-[1rem] lg:px-[3rem] px-3 rounded-[25px] shadow-md"
+            >
+              <div
+                className="ounded-full min-w-[40px] min-h-[40px] lg:min-w-[70px] lg:min-h-[70px] flex items-center justify-center text-2xl rounded-full"
+                style={{ backgroundColor: stat.color }}
+              >
+                {stat.icon}
+              </div>
+              <div>
+                <h3 className="text-[#718EBF]">{stat.label}</h3>
+                <p className="text-xl font-bold">${stat.value}</p>
+              </div>
             </div>
-            <p className="flex flex-col gap-1">
-              <span className="text-[#718EBF]">My Balance</span>
-              <span className="font-semibold text-xl">${overview.balance.toLocaleString()}</span>
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 shadow-lg rounded-sm p-6">
-            <div className="w-[35px] h-[35px] p-2 rounded-full bg-[#E7EDFF] flex items-center justify-center">
-              <HandCoinsIcon className="text-[#396AFF]"/>
-            </div>
-            <p className="flex flex-col gap-1">
-              <span className="text-[#718EBF]">Income</span>
-              <span className="font-semibold text-xl">${overview.income.toLocaleString()}</span>
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 shadow-lg rounded-sm p-6">
-            <div className="w-[35px] h-[35px] p-2 rounded-full bg-[#FFE0EB] flex items-center justify-center">
-              <CoinsIcon className="text-[#FF82AC]"/>
-            </div>
-            <p className="flex flex-col gap-1">
-              <span className="text-[#718EBF]">Expense</span>
-              <span className="font-semibold">${overview.expenses.toLocaleString()}</span>
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 shadow-lg rounded-sm p-6">
-            <div className="w-[35px] h-[35px] p-2 rounded-full bg-[#DCFAF8] flex items-center justify-center">
-              <PiggyBankIcon className="text-[#16DBCC]"/>
-            </div>
-            <p className="flex flex-col gap-1">
-              <span className="text-[#718EBF]">Total Saving</span>
-              <span className="font-semibold">${overview.total_savings.toLocaleString()}</span>
-            </p>
-          </div>
+          ))}
         </div>
       )}
     </div>
