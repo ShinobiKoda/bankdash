@@ -51,9 +51,9 @@ export default function LastTransaction() {
   };
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 w-full">
       <h2 className="font-semibold text-lg">Last Transaction</h2>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 w-full">
         {loading
           ? Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="flex items-center justify-between">
