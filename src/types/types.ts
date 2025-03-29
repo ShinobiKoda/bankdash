@@ -75,6 +75,8 @@ export interface UnitTransaction{
   type: string
   category: string;
   status: string;
+  credit_card_used: string
+
 }
 
 export interface Overview{

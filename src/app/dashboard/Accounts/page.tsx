@@ -6,7 +6,7 @@ export default function page() {
   return (
     <div className='flex flex-col gap-7 w-full mb-4'>
       <AccountOverview />
-      <div>
+      <div className='w-full flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr]'>
         <LastTransaction />
       </div>
     </div>

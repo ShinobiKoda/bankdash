@@ -40,6 +40,15 @@ export default function LastTransaction() {
     },
   ];
 
+  const formatCardNumber = (number: string): string => {
+    if (!number || number.length < 8) return number; // Handle invalid numbers
+
+    const firstFour = number.slice(0, 4);
+    const masked = "**** **** ****"; // Adjust based on total length
+
+    return `${firstFour} ${masked}`;
+  };
+
   return (
     <section className="flex flex-col gap-4">
       <h2 className="font-semibold text-lg">Last Transaction</h2>
@@ -50,7 +59,7 @@ export default function LastTransaction() {
 
           return (
             <div key={index} className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 ">
                 <div
                   className="w-[45px] h-[45px] rounded-xl flex items-center justify-center"
                   style={{ backgroundColor: styles[index].bgcolor }}
@@ -62,7 +71,10 @@ export default function LastTransaction() {
                   <span className="text-[#718EBF]">{transaction.date}</span>
                 </p>
               </div>
-              <p className="" style={{color: color}}>{sign}${transaction.amount}</p>
+              <p className="hidden text-[#718EBF] lg:block capitalize">{transaction.category}</p>
+              <p className="hidden text-[#718EBF] lg:block">{formatCardNumber(transaction.credit_card_used)}</p>
+              <p className="hidden text-[#718EBF] lg:block capitalize">{transaction.status}</p>
+              <p className="font-medium" style={{color: color}}>{sign}${transaction.amount}</p>
             </div>
           );
         })}
