@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { CreditCard } from "@/types/types";
+import { Skeleton } from "../ui/skeleton"; // Import Skeleton component
 import Image from "next/image";
 import {
   Carousel,
@@ -59,7 +60,30 @@ export default function AccountCard() {
           {showAll ? "Show Less" : "See All"}
         </button>
       </header>
-      {showAll ? (
+      {loading ? (
+        <div className="flex flex-col gap-4">
+          <div className="bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden p-3">
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-6 w-24" />
+              <Skeleton className="h-8 w-8 rounded-full" />
+            </div>
+            <div className="flex items-center gap-8">
+              <div className="flex flex-col gap-1">
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-6 w-24" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-6 w-24" />
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <Skeleton className="h-6 w-32" />
+              <Skeleton className="h-8 w-8 rounded-full" />
+            </div>
+          </div>
+        </div>
+      ) : showAll ? (
         <div className="w-full">
           <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
             <CarouselContent>
