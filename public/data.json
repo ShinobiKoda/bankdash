@@ -59,37 +59,37 @@
   ],
   "weekly_activities": [
     {
-      "day":"Monday",
+      "day": "Monday",
       "deposit": 290,
       "withdrawal": 350
     },
     {
-      "day":"Tuesday",
+      "day": "Tuesday",
       "deposit": 380,
       "withdrawal": 490
     },
     {
-      "day":"Wednesday",
+      "day": "Wednesday",
       "deposit": 220,
       "withdrawal": 160
     },
     {
-      "day":"Thursday",
+      "day": "Thursday",
       "deposit": 250,
       "withdrawal": 405
     },
     {
-      "day":"Friday",
+      "day": "Friday",
       "deposit": 310,
       "withdrawal": 400
     },
     {
-      "day":"Saturday",
+      "day": "Saturday",
       "deposit": 230,
       "withdrawal": 495
     },
     {
-      "day":"Sunday",
+      "day": "Sunday",
       "deposit": 120,
       "withdrawal": 330
     }
@@ -162,147 +162,206 @@
       "date": "28 Jan",
       "time": "12:30AM",
       "amount": 2500,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Freepik Sales",
       "date": "25 Jan",
       "time": "12:40PM",
       "amount": 750,
-      "type": "credit"
+      "type": "credit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Mobile Service",
       "date": "20 Jan",
       "time": "10:40AM",
       "amount": 150,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Wilson",
       "date": "15 Jan",
       "time": "03:29PM",
       "amount": 1050,
-      "type": "debit"
+      "type": "debit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Emilly",
       "date": "14 Jan",
       "time": "10:40AM",
       "amount": 840,
-      "type": "credit"
+      "type": "credit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Netflix",
       "date": "12 Jan",
       "time": "01:30AM",
       "amount": 1200,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Amazon Purchase",
       "date": "11 Jan",
       "time": "12:40PM",
       "amount": 6000,
-      "type": "credit"
+      "type": "credit",
+      "category": "shopping",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Starbucks",
       "date": "08 Jan",
       "time": "10:40PM",
       "amount": 200,
-      "type": "credit"
+      "type": "credit",
+      "category": "shopping",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Uber Eats",
       "date": "07 Jan",
       "time": "02:29PM",
       "amount": 1590,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Grocery Shopping",
       "date": "05 Jan",
       "time": "11:55AM",
       "amount": 1200,
-      "type": "debit"
+      "type": "debit",
+      "category": "shopping",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Gas Station",
       "date": "04 Jan",
       "time": "10:00AM",
       "amount": 500,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Restaurant",
       "date": "02 Jan",
       "time": "18:40PM",
       "amount": 3000,
-      "type": "debit"
+      "type": "debit",
+      "category": "shopping",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Gym Membership",
       "date": "30 Dec",
       "time": "07:00AM",
       "amount": 1500,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Renzo",
       "date": "28 Dec",
       "time": "01:29PM",
       "amount": 1200,
-      "type": "credit"
+      "type": "credit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Xander",
       "date": "26 Dec",
       "time": "17:40AM",
       "amount": 2000,
-      "type": "credit"
+      "type": "credit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Car Insurance",
       "date": "26 Dec",
       "time": "10:40AM",
       "amount": 1500,
-      "type": "credit"
+      "type": "credit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Rent Payment",
       "date": "25 Dec",
       "time": "04:00PM",
       "amount": 3000,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     },
     {
       "description": "Electricity Bill",
       "date": "25 Dec",
       "time": "04:01PM",
       "amount": 1500,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3344134519987653"
     },
     {
       "description": "Water Bill",
       "date": "25 Dec",
       "time": "04:05PM",
       "amount": 500,
-      "type": "debit"
+      "type": "debit",
+      "category": "service",
+      "status": "completed",
+      "credit_card_used": "3788567856571234"
     },
     {
       "description": "Sales",
       "date": "23 Dec",
       "time": "10:40AM",
       "amount": 2000,
-      "type": "credit"
+      "type": "credit",
+      "category": "transfer",
+      "status": "completed",
+      "credit_card_used": "1234567890213456"
     }
   ],
   "account_overview": {
     "balance": 12750,
     "income": 5600,
     "expenses": 3460,
-    "total_savings":7920
+    "total_savings": 7920
   }
-  
 }

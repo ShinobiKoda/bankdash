@@ -73,6 +73,8 @@ export interface UnitTransaction{
   time: string;
   amount: number;
   type: string
+  category: string;
+  status: string;
 }
 
 export interface Overview{
