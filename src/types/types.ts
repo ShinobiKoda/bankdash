@@ -16,6 +16,7 @@ export interface User{
   all_transactions: UnitTransaction[] 
   account_overview: Overview;
   debit_credit_overview: TransactionOverview;
+  invoices_sent: Invoice[]
 }
 
 export interface Location{
@@ -99,4 +100,10 @@ export interface DailyTransaction{
   day: string
   debit: number
   credit: number
+}
+
+export interface Invoice{
+  description: string
+  time: string
+  amount: number
 }

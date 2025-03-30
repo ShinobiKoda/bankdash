@@ -404,5 +404,27 @@
         "credit": 1500
       }
     ]
-  }
+  },
+  "invoices_sent": [
+    {
+      "description": "Apple Store",
+      "time": "5h ago",
+      "amount": 450
+    },
+    {
+      "description": "Micheal",
+      "time": "2 days ago",
+      "amount": 160
+    },
+    {
+      "description": "Playstation",
+      "time": "5 days ago",
+      "amount": 1085
+    },
+    {
+      "description": "William",
+      "time": "10 days ago",
+      "amount": 90
+    }
+  ]
 }
