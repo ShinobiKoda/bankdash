@@ -9,13 +9,24 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card"
+
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-import { useState, useEffect } from "react"
+
+import { useState, useEffect, CSSProperties } from "react"
+
+
+import BarChartLoader from "@/components/charts/BarChartLoader"; // Import BarChartLoader
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 export default function BankTransfer() {
   const [transfers, setTransfers] = useState<Transfer[]>([]);
@@ -83,7 +94,7 @@ export default function BankTransfer() {
           </LineChart>
         </ChartContainer>
       ) : (
-        <p>Loading chart...</p>
+        <BarChartLoader />
       )}
       </CardContent>
     </Card>

@@ -156,7 +156,7 @@ export default function AccountCard() {
               />
             </div>
 
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-12">
               <p className="flex flex-col">
                 <span className="opacity-70">CARD HOLDER</span>
                 <span className="text-lg">{currentCard.name}</span>

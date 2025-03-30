@@ -7,7 +7,7 @@ export default function page() {
   return (
     <div className='flex flex-col gap-7 w-full mb-4'>
       <AccountOverview />
-      <div className='w-full flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-8 items-center'>
+      <div className='w-full flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-[4rem] items-center'>
         <LastTransaction />
         <AccountCard />
       </div>

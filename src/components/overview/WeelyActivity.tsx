@@ -10,9 +10,11 @@ import {
 } from "@/components/ui/chart";
 import { fetchUserData } from "@/lib/api";
 import type { Activity } from "@/types/types";
+import BarChartLoader from "@/components/charts/BarChartLoader"; // Import the loader
 
 export default function WeelyActivity() {
   const [activities, setActivities] = useState<Activity[]>([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const getUserActivity = async () => {
     try {
@@ -20,7 +22,8 @@ export default function WeelyActivity() {
       setActivities(user.weekly_activities);
     } catch (error) {
       console.log("Failed to fetch user activities", error);
-      return [];
+    } finally {
+      setLoading(false); // Set loading to false after data fetch
     }
   };
 
@@ -40,9 +43,7 @@ export default function WeelyActivity() {
   } satisfies ChartConfig;
 
   return (
-    <section
-      className="w-full mx-auto flex flex-col gap-1"
-    >
+    <section className="w-full mx-auto flex flex-col gap-1">
       <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">
         Weekly Activity
       </h2>
@@ -56,26 +57,39 @@ export default function WeelyActivity() {
           <span>Withdraw</span>
         </div>
       </div>
-      {activities.length > 0 && (
-        <ChartContainer
-          config={chartConfig}
-          className="min-h-[200px] max-h-[400px] ml-[-2rem]"
-        >
-          <BarChart accessibilityLayer data={activities}>
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="day"
-              tickLine={true}
-              tickMargin={10}
-              axisLine={true}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <YAxis tickLine={true} tickMargin={10} axisLine={true} tickFormatter={(value) => `$${value.toLocaleString()}`}/>
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <Bar dataKey="withdrawal" fill="#1814F3" radius={4} />
-            <Bar dataKey="deposit" fill="#16DBCC" radius={4} />
-          </BarChart>
-        </ChartContainer>
+      {loading ? (
+        <BarChartLoader /> // Show loader while loading
+      ) : (
+        activities.length > 0 && (
+          <ChartContainer
+            config={chartConfig}
+            className="min-h-[200px] max-h-[400px] ml-[-2rem]"
+          >
+            <BarChart
+              key={activities.length} // Add a unique key to ensure consistent rendering
+              accessibilityLayer
+              data={activities}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="day"
+                tickLine={true}
+                tickMargin={10}
+                axisLine={true}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <YAxis
+                tickLine={true}
+                tickMargin={10}
+                axisLine={true}
+                tickFormatter={(value) => `$${value.toLocaleString()}`}
+              />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Bar dataKey="withdrawal" fill="#1814F3" radius={4} />
+              <Bar dataKey="deposit" fill="#16DBCC" radius={4} />
+            </BarChart>
+          </ChartContainer>
+        )
       )}
     </section>
   );
