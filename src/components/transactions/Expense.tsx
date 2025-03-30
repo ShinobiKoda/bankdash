@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { PulseLoader } from "react-spinners"; // Import PulseLoader from react-spinners
 
 import {
   ChartConfig,
@@ -17,14 +17,16 @@ import { fetchUserData } from "@/lib/api";
 
 export default function Expense() {
   const [expense, setExpense] = useState<Expense[]>([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const getUserExpense = async () => {
     try {
-      
       const user = await fetchUserData();
       setExpense(user.expenses);
     } catch (error) {
       console.log("Failed to fetch user data", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -46,10 +48,22 @@ export default function Expense() {
     },
   } satisfies ChartConfig;
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[200px]">
+        <PulseLoader color="#16DBCC" size={15} />{" "}
+        {/* Display spinner while loading */}
+      </div>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-6">
       <h2 className="font-semibold text-lg text-[#343C6A]">My Expense</h2>
-      <ChartContainer config={chartConfig} className="min-h-[200px] max-h-[300px] w-full ml-[-1rem]">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-[200px] max-h-[300px] w-full ml-[-1rem]"
+      >
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
           <XAxis
