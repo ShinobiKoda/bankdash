@@ -363,5 +363,46 @@
     "income": 5600,
     "expenses": 3460,
     "total_savings": 7920
+  },
+  "debit_credit_overview": {
+    "weekly_debit": 7560,
+    "weekly_credit": 5420,
+    "daily_transactions": [
+      {
+        "day": "Monday",
+        "debit": 1200,
+        "credit": 800
+      },
+      {
+        "day": "Tuesday",
+        "debit": 1500,
+        "credit": 900
+      },
+      {
+        "day": "Wednesday",
+        "debit": 2000,
+        "credit": 1200
+      },
+      {
+        "day": "Thursday",
+        "debit": 1800,
+        "credit": 1100
+      },
+      {
+        "day": "Friday",
+        "debit": 2200,
+        "credit": 1300
+      },
+      {
+        "day": "Saturday",
+        "debit": 2500,
+        "credit": 1400
+      },
+      {
+        "day": "Sunday",
+        "debit": 3000,
+        "credit": 1500
+      }
+    ]
   }
 }

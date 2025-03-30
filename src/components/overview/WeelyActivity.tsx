@@ -44,9 +44,7 @@ export default function WeelyActivity() {
 
   return (
     <section className="w-full mx-auto flex flex-col gap-1">
-      <h2 className="font-semibold text-xl text-[#343C6A] mb-[3rem]">
-        Weekly Activity
-      </h2>
+      <h2 className="font-semibold text-xl text-[#343C6A]">Weekly Activity</h2>
       <div className="flex gap-2 w-full items-center justify-end">
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 bg-[#16DBCC] rounded-full"></div>

@@ -1,5 +1,6 @@
 import AccountCard from '@/components/accounts/AccountCard'
 import AccountOverview from '@/components/accounts/AccountOverview'
+import DebitCreditOverview from '@/components/accounts/DebitCreditOverview'
 import LastTransaction from '@/components/accounts/LastTransaction'
 import React from 'react'
 
@@ -10,6 +11,9 @@ export default function page() {
       <div className='w-full flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-[4rem] items-center'>
         <LastTransaction />
         <AccountCard />
+      </div>
+      <div className='flex flex-col gap-4 lg:grid lg:grid-cols-[3fr_1fr] lg:gap-[4rem]'>
+        <DebitCreditOverview />
       </div>
     </div>
   )

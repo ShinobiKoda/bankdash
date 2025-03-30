@@ -1,3 +1,5 @@
+import { StringDecoder } from "string_decoder"
+
 export interface User{
   name: string
   username: string
@@ -13,6 +15,7 @@ export interface User{
   expenses: Expense[];
   all_transactions: UnitTransaction[] 
   account_overview: Overview;
+  debit_credit_overview: TransactionOverview;
 }
 
 export interface Location{
@@ -84,4 +87,16 @@ export interface Overview{
   income: number
   expenses: number
   total_savings: number
+}
+
+export interface TransactionOverview{
+  weekly_debit: number
+  weekly_credit: number
+  daily_transactions: DailyTransaction[]
+}
+
+export interface DailyTransaction{
+  day: string
+  debit: number
+  credit: number
 }
