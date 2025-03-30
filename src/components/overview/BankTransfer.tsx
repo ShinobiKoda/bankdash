@@ -17,16 +17,11 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-import { useState, useEffect, CSSProperties } from "react"
+import { useState, useEffect } from "react"
 
 
 import BarChartLoader from "@/components/charts/BarChartLoader"; // Import BarChartLoader
 
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
 
 export default function BankTransfer() {
   const [transfers, setTransfers] = useState<Transfer[]>([]);
