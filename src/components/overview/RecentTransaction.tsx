@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import { CreditCard, CoinsIcon } from "lucide-react";
 import { fetchUserData } from "@/lib/api";
 import type { Transaction } from "@/types/types";
@@ -27,6 +27,21 @@ export default function RecentTransaction() {
     getUserTransaction();
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Stagger animation for children
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="flex flex-col gap-4">
       <h2 className="font-semibold text-xl text-[#343C6A]z">
@@ -51,35 +66,49 @@ export default function RecentTransaction() {
             </div>
           ))
         ) : transactions.length > 0 ? (
-          transactions.map((transaction) => {
-            const isDebit = transaction.type === "debit";
-            const amountColor = isDebit ? "text-[#FF4B4A]" : "text-[#41D4A8]";
-            const amountSign = isDebit ? "-" : "+";
-            const iconColor = isDebit ? "#FF4B4A" : "#41D4A8";
-            const Icon = isDebit ? CreditCard : CoinsIcon;
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col gap-9"
+          >
+            <AnimatePresence>
+              {transactions.map((transaction) => {
+                const isDebit = transaction.type === "debit";
+                const amountColor = isDebit
+                  ? "text-[#FF4B4A]"
+                  : "text-[#41D4A8]";
+                const amountSign = isDebit ? "-" : "+";
+                const iconColor = isDebit ? "#FF4B4A" : "#41D4A8";
+                const Icon = isDebit ? CreditCard : CoinsIcon;
 
-            return (
-              <div
-                className="w-full flex items-center justify-between"
-                key={transaction.id} // Use a unique identifier from the transaction
-              >
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 bg-[#FFF5D9] flex items-center justify-center rounded-full">
-                    <Icon color={iconColor} />
-                  </div>
-                  <p className="flex flex-col">
-                    <span className="font-medium">
-                      {transaction.description}
-                    </span>
-                    <span className="text-[#718EBF]">{transaction.date}</span>
-                  </p>
-                </div>
-                <p className={`font-medium ${amountColor}`}>
-                  {amountSign}${transaction.amount}
-                </p>
-              </div>
-            );
-          })
+                return (
+                  <motion.div
+                    variants={itemVariants}
+                    key={transaction.id} // Use a unique identifier from the transaction
+                    className="w-full flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="h-12 w-12 bg-[#FFF5D9] flex items-center justify-center rounded-full">
+                        <Icon color={iconColor} />
+                      </div>
+                      <p className="flex flex-col">
+                        <span className="font-medium">
+                          {transaction.description}
+                        </span>
+                        <span className="text-[#718EBF]">
+                          {transaction.date}
+                        </span>
+                      </p>
+                    </div>
+                    <p className={`font-medium ${amountColor}`}>
+                      {amountSign}${transaction.amount}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         ) : (
           <p>No transactions</p>
         )}

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../ui/sidebar";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 import { Settings, BellDotIcon } from "lucide-react";
 
@@ -27,8 +28,18 @@ export default function Header() {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <div className="w-full flex flex-col gap-4 px-4 py-5 lg:px-8">
-      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4 bg-white">
+    <motion.div
+      className="w-full flex flex-col gap-4 px-4 py-5 lg:px-8"
+      initial={{ opacity: 0, y: -20 }} // Initial animation state
+      animate={{ opacity: 1, y: 0 }} // Final animation state
+      transition={{ duration: 0.5, ease: "easeOut" }} // Animation timing
+    >
+      <motion.header
+        className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 w-full mb-4 bg-white"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
         <div className="w-full flex items-center justify-between">
           <button
             className="flex flex-col justify-between items-center w-9 h-9 p-2 lg:hidden"
@@ -44,7 +55,14 @@ export default function Header() {
               className={`block w-6 h-0.5 bg-gray-700 transition-transform duration-400`}
             ></span>
           </button>
-          <h1 className="font-bold text-2xl">{title}</h1>
+          <motion.h1
+            className="font-bold text-2xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+          >
+            {title}
+          </motion.h1>
           <div className="w-10 h-10 rounded-full overflow-hidden">
             <Image
               src={"/images/profile-pic.svg"}
@@ -55,7 +73,12 @@ export default function Header() {
             />
           </div>
         </div>
-        <div className="lg:flex lg:gap-4 lg:items-center">
+        <motion.div
+          className="lg:flex lg:gap-4 lg:items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           <div className="flex items-center gap-2 py-3 px-4 bg-[#F5F7FA] rounded-3xl w-full lg:min-w-[255px]">
             <Image
               src={"/images/search-icon.svg"}
@@ -83,8 +106,8 @@ export default function Header() {
               alt="profile-pic"
             />
           </div>
-        </div>
-      </header>
-    </div>
+        </motion.div>
+      </motion.header>
+    </motion.div>
   );
 }
