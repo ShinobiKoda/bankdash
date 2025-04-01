@@ -17,7 +17,7 @@ export interface User{
   account_overview: Overview;
   debit_credit_overview: TransactionOverview;
   invoices_sent: Invoice[]
-  investments_overivew: Investment;
+  investments_overview: Investment;
   yearly_total_investments: TotalInvestment[];
   monthly_revenue: MonthlyRevenue[];
   user_investments: UserInvestment[];
