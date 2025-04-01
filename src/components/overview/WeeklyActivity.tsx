@@ -12,7 +12,7 @@ import { fetchUserData } from "@/lib/api";
 import type { Activity } from "@/types/types";
 import BarChartLoader from "@/components/charts/BarChartLoader"; // Import the loader
 
-export default function WeelyActivity() {
+export default function WeeklyActivity() {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true); // Add loading state
 
