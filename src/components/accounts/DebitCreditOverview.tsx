@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { TransactionOverview, DailyTransaction } from "@/types/types";
 
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,

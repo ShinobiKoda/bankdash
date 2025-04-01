@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import { ArrowRight, SendIcon } from "lucide-react";
-import { Skeleton } from "../ui/skeleton";
+
+import { SendIcon } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -13,7 +12,6 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function QuickTransfer() {
-  const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [message, setMessage] = useState("");
 
@@ -39,29 +37,25 @@ export default function QuickTransfer() {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-semibold text-lg text-[#DDDDDD]">Quick Transfer</h2>
-      {loading ? (
-        <Skeleton className="h-20 w-full" />
-      ) : (
-        <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
-          <CarouselContent>
-            {transfer_recipients.map((recipient, index) => (
-              <CarouselItem
-                key={index}
-                className="flex flex-col gap-2 text-center items-center"
-              >
-                <FontAwesomeIcon
-                  icon={recipient.icon}
-                  className="text-4xl text-gray-500"
-                />
-                <p className="flex flex-col">
-                  <span className="text-base">{recipient.name}</span>
-                  <span className="text-[#718EBF]">{recipient.position}</span>
-                </p>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      )}
+      <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
+        <CarouselContent>
+          {transfer_recipients.map((recipient, index) => (
+            <CarouselItem
+              key={index}
+              className="flex flex-col gap-2 text-center items-center"
+            >
+              <FontAwesomeIcon
+                icon={recipient.icon}
+                className="text-4xl text-gray-500"
+              />
+              <p className="flex flex-col">
+                <span className="text-base">{recipient.name}</span>
+                <span className="text-[#718EBF]">{recipient.position}</span>
+              </p>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
       <div className="flex items-center w-full gap-5">
         <span className="text-base text-[#718EBF] text-nowrap">
           Write Amount
