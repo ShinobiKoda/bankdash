@@ -17,6 +17,43 @@ export interface User{
   account_overview: Overview;
   debit_credit_overview: TransactionOverview;
   invoices_sent: Invoice[]
+  investments_overivew: Investment;
+  yearly_total_investments: TotalInvestment[];
+  monthly_revenue: MonthlyRevenue[];
+  user_investments: UserInvestment[];
+  trending_stock: TrendingStock[];
+}
+
+export interface Investment{
+  total_investment: number
+  number_of_investments: number
+  rate_of_return: number
+}
+
+export interface TotalInvestment{
+  year: string
+  total_investment: number
+}
+
+export interface MonthlyRevenue{
+  month: string
+  revenue: number
+}
+
+export interface UserInvestment{
+  name: string
+  type: string
+  percentage: number
+  type_of_percentage: string
+}
+
+export interface TrendingStock{
+  sl_no: string
+  name: string
+  price: number
+  return_value: number
+  return_type: string
+
 }
 
 export interface Location{

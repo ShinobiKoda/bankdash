@@ -92,17 +92,9 @@ export default function DebitCreditOverview() {
               <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="day"
-                tickLine={true}
-                tickMargin={10}
-                axisLine={true}
                 tickFormatter={(value) => value.slice(0, 3)}
               />
-              <YAxis
-                tickLine={true}
-                tickMargin={10}
-                axisLine={true}
-                tickFormatter={(value) => `$${value.toLocaleString()}`}
-              />
+             
               <ChartTooltip content={<ChartTooltipContent />} />
               <Bar dataKey="debit" fill="#1A16F3" radius={10} barSize={30} />
               <Bar dataKey="credit" fill="#FCAA0B" radius={10} barSize={30} />

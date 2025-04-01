@@ -426,5 +426,119 @@
       "time": "10 days ago",
       "amount": 90
     }
+  ],
+  "investments_overveiw": {
+    "total_investment": 150000,
+    "number_of_investments": 1250,
+    "rate_of_return": 5.80
+  },
+  "yearly_total_investments": [
+    {
+      "year": 2016,
+      "total_investment": 10000
+    },
+    {
+      "year": 2017,
+      "total_investment": 15000
+    },
+    {
+      "year": 2018,
+      "total_investment": 20000
+    },
+    {
+      "year": 2019,
+      "total_investment": 25000
+    },
+    {
+      "year": 2020,
+      "total_investment": 30000
+    },
+    {
+      "year": 2021,
+      "total_investment": 35000
+    }
+  ],
+  "monthly_revenue": [
+    {
+      "month": "April",
+      "revenue": 8000
+    },
+    {
+      "month": "May",
+      "revenue": 9000
+    },
+    {
+      "month": "June",
+      "revenue": 10000
+    },
+    {
+      "month": "July",
+      "revenue": 11000
+    },
+    {
+      "month": "August",
+      "revenue": 12000
+    },
+    {
+      "month": "September",
+      "revenue": 13000
+    }
+  ],
+  "user_investments": [
+    {
+      "name": "Apple Store",
+      "type": "E-commerce, Marketplace",
+      "percentage": 16,
+      "type_of_percentage": "positive"
+    },
+    {
+      "name": "Samsung Mobile",
+      "type": "E-commerce, Marketplace",
+      "percentage": 4,
+      "type_of_percentage": "negative"
+    },
+    {
+      "name": "Tesla Motors",
+      "type": "Electric Vehincles",
+      "percentage": 25,
+      "type_of_percentage": "positive"
+    }
+  ],
+  "trending_stock": [
+    {
+      "sl_no": 1,
+      "name": "Trivago",
+      "price": 520,
+      "return_value": 5,
+      "return_type": "positive"
+    },
+    {
+      "sl_no": 2,
+      "name": "Canon",
+      "price": 480,
+      "return_value": 10,
+      "return_type": "positive"
+    },
+    {
+      "sl_no": 3,
+      "name": "Uber Food",
+      "price": 350,
+      "return_value": 3,
+      "return_type": "negative"
+    },
+    {
+      "sl_no": 4,
+      "name": "Nokia",
+      "price": 940,
+      "return_value": 2,
+      "return_type": "positive"
+    },
+    {
+      "sl_no": 5,
+      "name": "Tiktok",
+      "price": 670,
+      "return_value": 12,
+      "return_type": "negative"
+    }
   ]
 }
