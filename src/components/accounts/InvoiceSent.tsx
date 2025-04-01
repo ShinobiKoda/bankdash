@@ -7,6 +7,7 @@ import type { Invoice } from "@/types/types";
 import { Skeleton } from "../ui/skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faGamepad, faStore } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function InvoiceSent() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -86,13 +87,21 @@ export default function InvoiceSent() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <motion.div
+          className="flex flex-col gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {invoices.map((invoice, index) => {
             const { icon, bgcolor } = getIconAndBgColor(invoice.description);
             return (
-              <div
+              <motion.div
                 className="flex items-center justify-between w-full"
                 key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <div className="flex items-center gap-4">
                   <div
@@ -109,10 +118,10 @@ export default function InvoiceSent() {
                   </p>
                 </div>
                 <p className="text-[#718EBF]">${invoice.amount}</p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       )}
     </section>
   );

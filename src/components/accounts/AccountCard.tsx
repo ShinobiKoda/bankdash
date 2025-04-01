@@ -10,6 +10,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"; // Import carousel components
+import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function AccountCard() {
   const [cards, setCards] = useState<CreditCard[]>([]);
@@ -84,7 +85,12 @@ export default function AccountCard() {
           </div>
         </div>
       ) : showAll ? (
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
             <CarouselContent>
               {cards.map((card, index) => (
@@ -92,7 +98,12 @@ export default function AccountCard() {
                   key={index}
                   className="basis-[95%] lg:basis-[80%]"
                 >
-                  <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
+                  <motion.div
+                    className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
                     <div className="p-3 w-full flex flex-col gap-4">
                       <div className="flex items-center justify-between">
                         <p className="flex flex-col gap-1">
@@ -132,14 +143,19 @@ export default function AccountCard() {
                         width={35}
                       />
                     </div>
-                  </div>
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
-        </div>
+        </motion.div>
       ) : (
-        <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
+        <motion.div
+          className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="p-3 w-full flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <p className="flex flex-col gap-1">
@@ -177,7 +193,7 @@ export default function AccountCard() {
               width={35}
             />
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
