@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { Overview } from "@/types/types";
 import {
-  HandCoinsIcon,
-  CoinsIcon,
+  BanknoteIcon,
+  TrendingUpIcon,
+  TrendingDownIcon,
   PiggyBankIcon,
-  DollarSign,
 } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
 
@@ -30,21 +30,21 @@ export default function AccountOverview() {
 
   const overview_stats = [
     {
-      icon: <DollarSign className="text-[#FFBB38]" />,
+      icon: <BanknoteIcon className="text-[#FFBB38]" />,
       label: "My Balance",
       value: overview?.balance.toLocaleString(),
       color: "#FFF5D9",
       bgColor: "#FFF5D9",
     },
     {
-      icon: <HandCoinsIcon className="text-[#396AFF]" />,
+      icon: <TrendingUpIcon className="text-[#396AFF]" />,
       label: "Income",
       value: overview?.income.toLocaleString(),
       color: "#E7EDFF",
       bgColor: "#E7EDFF",
     },
     {
-      icon: <CoinsIcon className="text-[#FF82AC]" />,
+      icon: <TrendingDownIcon className="text-[#FF82AC]" />,
       label: "Expense",
       value: overview?.expenses.toLocaleString(),
       color: "#FFE0EB",

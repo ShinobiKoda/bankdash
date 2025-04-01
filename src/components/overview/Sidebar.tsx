@@ -5,17 +5,22 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Home,
-  Settings,
-  DollarSignIcon,
-  User,
-  PiggyBank,
-  WalletCards,
-  SpadeIcon,
-  Lightbulb,
-} from "lucide-react";
+  faHome,
+  faDollarSign,
+  faUser,
+  faPiggyBank,
+  faCreditCard,
+  faLightbulb,
+  faCogs,
+  faTools,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser as farUser,
+  faCreditCard as farCreditCard,
+  faLightbulb as farLightbulb,
+} from "@fortawesome/free-regular-svg-icons";
 
 import {
   Sidebar,
@@ -34,47 +39,47 @@ const items = [
   {
     title: "Dashboard",
     url: "/dashboard/Overview",
-    icon: Home,
+    icon: { solid: faHome, regular: faHome }, // No regular version, use solid for both
   },
   {
     title: "Transactions",
     url: "/dashboard/Transactions",
-    icon: DollarSignIcon,
+    icon: { solid: faDollarSign, regular: faDollarSign }, // No regular version, use solid for both
   },
   {
     title: "Accounts",
     url: "/dashboard/Accounts",
-    icon: User,
+    icon: { solid: faUser, regular: farUser },
   },
   {
     title: "Investments",
     url: "/dashboard/Investments",
-    icon: PiggyBank,
+    icon: { solid: faPiggyBank, regular: faPiggyBank }, // No regular version, use solid for both
   },
   {
     title: "Credit Cards",
     url: "/dashboard/Credit-cards",
-    icon: WalletCards,
+    icon: { solid: faCreditCard, regular: farCreditCard },
   },
   {
     title: "Loans",
     url: "/dashboard/Loans",
-    icon: DollarSignIcon,
+    icon: { solid: faDollarSign, regular: faDollarSign }, // No regular version, use solid for both
   },
   {
     title: "Services",
     url: "/dashboard/Services",
-    icon: SpadeIcon,
+    icon: { solid: faTools, regular: faTools }, // Replace spade with tools icon
   },
   {
     title: "My Privileges",
     url: "/dashboard/Privileges",
-    icon: Lightbulb,
+    icon: { solid: faLightbulb, regular: farLightbulb },
   },
   {
     title: "Setting",
     url: "/dashboard/Settings",
-    icon: Settings,
+    icon: { solid: faCogs, regular: faCogs }, // No regular version, use solid for both
   },
 ];
 
@@ -138,7 +143,14 @@ export function AppSidebar() {
                             : "text-[#B1B1B1]"
                         }`}
                       >
-                        <item.icon width="64" height="64" />
+                        <FontAwesomeIcon
+                          icon={
+                            pathname === item.url
+                              ? item.icon.solid
+                              : item.icon.regular
+                          }
+                          size="lg"
+                        />
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -169,12 +181,12 @@ export function AppSidebar() {
             <SidebarGroupContent>
               <SidebarMenu>
                 {items.map((item, index) => (
-                  <motion.div 
-                  key={item.title}
-                  variants={cardVariants}
-                  initial="hidden"
-                  animate="visible"
-                  custom={index}
+                  <motion.div
+                    key={item.title}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    custom={index}
                   >
                     <SidebarMenuItem>
                       <SidebarMenuButton asChild className="text-xl" size="lg">
@@ -192,7 +204,14 @@ export function AppSidebar() {
                             }
                           }}
                         >
-                          <item.icon width="64" height="64" />
+                          <FontAwesomeIcon
+                            icon={
+                              pathname === item.url
+                                ? item.icon.solid
+                                : item.icon.regular
+                            }
+                            size="lg"
+                          />
                           <span>{item.title}</span>
                         </Link>
                       </SidebarMenuButton>
