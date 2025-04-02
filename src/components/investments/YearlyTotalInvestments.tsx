@@ -1,7 +1,11 @@
+"use client";
 
-"use client"
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { useState, useEffect } from "react";
+import { fetchUserData } from "@/lib/api";
+import type { TotalInvestment } from "@/types/types";
+import BarChartLoader from "../charts/BarChartLoader";
+
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
   Card,
   CardContent,
@@ -9,34 +13,56 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+} from "@/components/ui/chart";
+
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "hsl(var(--chart-1))",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function YearlyTotalInvestments() {
+  const [totalInvestment, setTotalInvestment] = useState<TotalInvestment[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const getTotalInvestment = async () => {
+    try {
+      const user = await fetchUserData();
+      setTotalInvestment(user.yearly_total_investments);
+    } catch (error) {
+      console.log("Error: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTotalInvestment();
+  }, []);
+
+  const chartData = totalInvestment;
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (chartData.length === 0) {
+    return <p>No data available.</p>;
+  }
+
   return (
-    <Card className="w-full max-h-[329px]">
+    <Card className="w-full max-h-[329px] -ml-6">
       <CardHeader>
-        <CardTitle>Line Chart - Linear</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle className="font-semibold text-xl text-[#333B69]">
+          Yearly Total Investment
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="w-full max-h-[329px]">
@@ -50,28 +76,39 @@ export default function YearlyTotalInvestments() {
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="year"
+              tickLine={true}
+              axisLine={true}
+              tickMargin={8}
+            />
+            <YAxis
+              dataKey="total_investment"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => {
+                return value.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                });
+              }}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
             <Line
-              dataKey="desktop"
+              dataKey="total_investment"
               type="linear"
-              stroke="var(--color-desktop)"
+              stroke="#FCAA0B"
               strokeWidth={2}
-              dot={false}
+              dot={{ r: 4, stroke: "#FCAA0B", strokeWidth: 2, fill: "#FFFFFF" }}
             />
           </LineChart>
         </ChartContainer>
       </CardContent>
-      
     </Card>
-
-  )
+  );
 }
