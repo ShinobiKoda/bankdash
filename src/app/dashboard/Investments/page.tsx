@@ -1,10 +1,16 @@
 import InvestmentOverview from '@/components/investments/InvestmentOverview'
+import MonthlyRevenue from '@/components/investments/MonthlyRevenue'
+import YearlyTotalInvestments from '@/components/investments/YearlyTotalInvestments'
 import React from 'react'
 
 export default function page() {
   return (
     <div className='w-full'>
       <InvestmentOverview />
+      <div className='flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start'>
+        <YearlyTotalInvestments />
+        <MonthlyRevenue />
+      </div>
     </div>
   )
 }
