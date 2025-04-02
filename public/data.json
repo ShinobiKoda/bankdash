@@ -435,7 +435,7 @@
   "yearly_total_investments": [
     {
       "year": 2016,
-      "total_investment": 10000
+      "total_investment": 0
     },
     {
       "year": 2017,
@@ -461,27 +461,27 @@
   "monthly_revenue": [
     {
       "month": "April",
-      "revenue": 8000
+      "revenue": 2000
     },
     {
       "month": "May",
-      "revenue": 9500
+      "revenue": 2500
     },
     {
       "month": "June",
-      "revenue": 8700
+      "revenue": 5000
     },
     {
       "month": "July",
-      "revenue": 11000
+      "revenue": 3000
     },
     {
       "month": "August",
-      "revenue": 10200
+      "revenue": 2800
     },
     {
       "month": "September",
-      "revenue": 12500
+      "revenue": 1500
     }
   ],
   "user_investments": [

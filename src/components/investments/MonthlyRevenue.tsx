@@ -1,111 +1,119 @@
-"use client"
-import * as React from "react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+"use client";
+
+import * as React from "react";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { date: "2024-04-01", desktop: 222, mobile: 150 },
-  { date: "2024-04-02", desktop: 97, mobile: 180 },
-  { date: "2024-04-03", desktop: 167, mobile: 120 },
-  { date: "2024-04-04", desktop: 242, mobile: 260 },
-  { date: "2024-04-05", desktop: 373, mobile: 290 },
-]
+} from "@/components/ui/chart";
+import { fetchUserData } from "@/lib/api";
+import type { MonthlyRevenue } from "@/types/types";
+import { useState, useEffect } from "react";
+import { ClipLoader } from "react-spinners"; // Import spinner
+
 const chartConfig = {
-  views: {
-    label: "Page Views",
-  },
-  desktop: {
-    label: "Desktop",
+  revenue: {
+    label: "Monthly Revenue",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
-} satisfies ChartConfig
-
+} satisfies ChartConfig;
 
 export default function MonthlyRevenue() {
+  const [monthlyRevenue, setMonthlyRevenue] = useState<MonthlyRevenue[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const getMonthlyRevenue = async () => {
+    try {
+      const user = await fetchUserData();
+      setMonthlyRevenue(user.monthly_revenue);
+    } catch (error) {
+      console.log("Error: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMonthlyRevenue();
+  }, []);
+
   const [activeChart, setActiveChart] =
-    React.useState<keyof typeof chartConfig>("desktop")
+    React.useState<keyof typeof chartConfig>("revenue");
   const total = React.useMemo(
     () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
+      revenue: monthlyRevenue.reduce(
+        (acc, curr) => acc + (curr.revenue || 0),
+        0
+      ),
     }),
-    []
-  )
+    [monthlyRevenue]
+  );
+
   return (
-    <Card className="w-full max-h-[329px]">
+    <Card className="w-full max-h-[329px] -ml-6">
       <CardHeader>
         <CardTitle className="font-semibold text-xl text-[#333B69]">
           Monthly Revenue
         </CardTitle>
       </CardHeader>
-      <CardContent >
-        <ChartContainer
-          config={chartConfig}
-          className=" max-h-[290px] w-full"
-        >
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
+      <CardContent>
+        {loading ? (
+          <div className="flex justify-center items-center h-full my-8">
+            <ClipLoader color="#16DBCC" size={50} /> {/* Spinner */}
+          </div>
+        ) : (
+          <ChartContainer
+            config={chartConfig}
+            className=" max-h-[329px] w-full"
           >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
-              tickFormatter={(value) => {
-                const date = new Date(value)
-                return date.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })
+            <LineChart
+              accessibilityLayer
+              data={monthlyRevenue} // Updated to use monthlyRevenue
+              margin={{
+                left: 12,
+                right: 12,
               }}
-            />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  className="w-[150px]"
-                  nameKey="views"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                  }}
-                />
-              }
-            />
-            <Line
-              dataKey={activeChart}
-              type="monotone"
-              stroke={`var(--color-${activeChart})`}
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        </ChartContainer>
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month" // Updated to use "month" from monthlyRevenue
+                tickLine={true}
+                axisLine={true}
+                tickMargin={8}
+                minTickGap={32}
+                interval={0} // Forces all months to be displayed
+                tickFormatter={(value) => value.slice(0, 3)} // Format month to show only first 3 letters
+              />
+              <YAxis
+                dataKey="revenue" // Updated to use "revenue" from monthlyRevenue
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={(value) => `$${value.toLocaleString()}`} // Format revenue with dollar sign and commas
+              />
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                    className="w-[150px]"
+                    nameKey="revenue"
+                    labelFormatter={(value) => value}
+                  />
+                }
+              />
+              <Line
+                dataKey="revenue" // Updated to use "revenue" from monthlyRevenue
+                type="monotone"
+                stroke="#16DBCC" // Updated to use the new color
+                strokeWidth={4}
+                dot={false}
+              />
+            </LineChart>
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
-  )
+  );
 }

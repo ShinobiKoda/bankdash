@@ -23,9 +23,9 @@ import {
 } from "@/components/ui/chart";
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
+  total_investment: {
+    label: "Total Investment",
+    color: "#FCAA0B", // Matches the line stroke color
   },
 } satisfies ChartConfig;
 

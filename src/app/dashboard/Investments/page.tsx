@@ -7,7 +7,7 @@ export default function page() {
   return (
     <div className="w-full flex flex-col gap-7">
       <InvestmentOverview />
-      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start">
+      <div className="flex flex-col gap-[5rem] lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start">
         <YearlyTotalInvestments />
         <MonthlyRevenue />
       </div>
