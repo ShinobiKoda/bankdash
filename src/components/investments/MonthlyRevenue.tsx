@@ -40,18 +40,6 @@ export default function MonthlyRevenue() {
     getMonthlyRevenue();
   }, []);
 
-  const [activeChart, setActiveChart] =
-    React.useState<keyof typeof chartConfig>("revenue");
-  const total = React.useMemo(
-    () => ({
-      revenue: monthlyRevenue.reduce(
-        (acc, curr) => acc + (curr.revenue || 0),
-        0
-      ),
-    }),
-    [monthlyRevenue]
-  );
-
   return (
     <Card className="w-full max-h-[329px] -ml-6">
       <CardHeader>

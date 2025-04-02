@@ -3,15 +3,12 @@
 import { useState, useEffect } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { TotalInvestment } from "@/types/types";
-import BarChartLoader from "../charts/BarChartLoader";
 import { PuffLoader } from "react-spinners"; // Import the loader
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
