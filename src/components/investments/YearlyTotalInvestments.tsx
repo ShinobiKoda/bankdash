@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { TotalInvestment } from "@/types/types";
 import BarChartLoader from "../charts/BarChartLoader";
+import { PuffLoader } from "react-spinners"; // Import the loader
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
@@ -49,14 +50,6 @@ export default function YearlyTotalInvestments() {
 
   const chartData = totalInvestment;
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (chartData.length === 0) {
-    return <p>No data available.</p>;
-  }
-
   return (
     <Card className="w-full max-h-[329px] -ml-6">
       <CardHeader>
@@ -65,49 +58,62 @@ export default function YearlyTotalInvestments() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="w-full max-h-[329px]">
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="year"
-              tickLine={true}
-              axisLine={true}
-              tickMargin={8}
-            />
-            <YAxis
-              dataKey="total_investment"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => {
-                return value.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                });
+        {loading ? (
+          <div className="flex justify-center items-center h-full my-8">
+            <PuffLoader color="#FCAA0B" size={50} /> {/* Loader component */}
+          </div>
+        ) : chartData.length === 0 ? (
+          <p>No data available.</p>
+        ) : (
+          <ChartContainer config={chartConfig} className="w-full max-h-[329px]">
+            <LineChart
+              accessibilityLayer
+              data={chartData}
+              margin={{
+                left: 12,
+                right: 12,
               }}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Line
-              dataKey="total_investment"
-              type="linear"
-              stroke="#FCAA0B"
-              strokeWidth={2}
-              dot={{ r: 4, stroke: "#FCAA0B", strokeWidth: 2, fill: "#FFFFFF" }}
-            />
-          </LineChart>
-        </ChartContainer>
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="year"
+                tickLine={true}
+                axisLine={true}
+                tickMargin={8}
+              />
+              <YAxis
+                dataKey="total_investment"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={(value) => {
+                  return value.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  });
+                }}
+              />
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Line
+                dataKey="total_investment"
+                type="linear"
+                stroke="#FCAA0B"
+                strokeWidth={2}
+                dot={{
+                  r: 4,
+                  stroke: "#FCAA0B",
+                  strokeWidth: 2,
+                  fill: "#FFFFFF",
+                }}
+              />
+            </LineChart>
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
   );

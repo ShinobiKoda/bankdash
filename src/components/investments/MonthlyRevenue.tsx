@@ -49,12 +49,9 @@ export default function MonthlyRevenue() {
   return (
     <Card className="w-full max-h-[329px]">
       <CardHeader>
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Line Chart - Interactive</CardTitle>
-          <CardDescription>
-            Showing total visitors for the last 3 months
-          </CardDescription>
-        </div>
+        <CardTitle className="font-semibold text-xl text-[#333B69]">
+          Monthly Revenue
+        </CardTitle>
       </CardHeader>
       <CardContent >
         <ChartContainer
