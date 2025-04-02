@@ -32,14 +32,20 @@ export default function RecentTransaction() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Stagger animation for children
+        staggerChildren: 0.3, // Increase stagger duration for smoother animation
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5, // Increase duration for smoother animation
+      },
+    },
   };
 
   return (
