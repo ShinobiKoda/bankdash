@@ -6,12 +6,7 @@ import type { TotalInvestment } from "@/types/types";
 import { PuffLoader } from "react-spinners"; // Import the loader
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -71,7 +66,7 @@ export default function YearlyTotalInvestments() {
                 right: 12,
               }}
             >
-              <CartesianGrid vertical={false} />
+              <CartesianGrid vertical={false} strokeDasharray="5 5" />
               <XAxis
                 dataKey="year"
                 tickLine={true}

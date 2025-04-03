@@ -65,7 +65,7 @@ export default function MonthlyRevenue() {
                 right: 12,
               }}
             >
-              <CartesianGrid vertical={false} />
+              <CartesianGrid vertical={false} strokeDasharray="5 5"/>
               <XAxis
                 dataKey="month" // Updated to use "month" from monthlyRevenue
                 tickLine={true}
