@@ -50,7 +50,7 @@ export default function Expense() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[200px]">
+      <div className="flex justify-center items-center min-h-[200px] max-h-[220px]">
         <PulseLoader color="#16DBCC" size={15} />{" "}
         {/* Display spinner while loading */}
       </div>

@@ -78,7 +78,7 @@ export default function Credit_Card({
               ))
             : cards.map((card) => (
                 <CarouselItem
-                  className="pl-4 basis-[85%] md:basis-[40%] lg:basis-1/3"
+                  className="pl-4 basis-[85%] md:basis-[40%] sm:basis-[70%]"
                   key={card.number}
                 >
                   <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
@@ -100,11 +100,11 @@ export default function Credit_Card({
 
                       <div className="flex items-center gap-8">
                         <p className="flex flex-col">
-                          <span className="opacity-70">CARD HOLDER</span>
-                          <span className="text-lg">{card.name}</span>
+                          <span className="opacity-70 truncate">CARD HOLDER</span>
+                          <span className="text-lg truncate">{card.name}</span>
                         </p>
                         <p className="flex flex-col">
-                          <span className="opacity-70">VALID THRU</span>
+                          <span className="opacity-70 truncate">VALID THRU</span>
                           <span className="text-lg">12/22</span>
                         </p>
                       </div>
