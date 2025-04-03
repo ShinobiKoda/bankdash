@@ -45,6 +45,7 @@ export interface UserInvestment{
   type: string
   percentage: number
   type_of_percentage: string
+  value: number;
 }
 
 export interface TrendingStock{

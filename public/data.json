@@ -489,19 +489,22 @@
       "name": "Apple Store",
       "type": "E-commerce, Marketplace",
       "percentage": 16,
-      "type_of_percentage": "positive"
+      "type_of_percentage": "positive",
+      "value": 54000
     },
     {
       "name": "Samsung Mobile",
       "type": "E-commerce, Marketplace",
       "percentage": 4,
-      "type_of_percentage": "negative"
+      "type_of_percentage": "negative",
+      "value": 25300
     },
     {
       "name": "Tesla Motors",
       "type": "Electric Vehincles",
       "percentage": 25,
-      "type_of_percentage": "positive"
+      "type_of_percentage": "positive",
+      "value": 8200
     }
   ],
   "trending_stock": [

@@ -27,6 +27,15 @@ export default function UserInvestment() {
     getUserInvestment();
   }, []);
 
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
   const styles = [
     {
       bgcolor: "#FFE0EB",
@@ -52,16 +61,23 @@ export default function UserInvestment() {
               <div className="flex items-center gap-3">
                 <Skeleton className="w-12 h-12 rounded-md" />
                 <div className="flex flex-col gap-1">
-                  <Skeleton className="w-24 h-4 rounded" />
-                  <Skeleton className="w-16 h-3 rounded" />
+                  <Skeleton className="w-32 h-4 rounded" />
+                  <Skeleton className="w-32 h-3 rounded" />
                 </div>
               </div>
-              <Skeleton className="w-10 h-4 rounded" />
+              <div className="flex flex-col items-center gap-3">
+                <Skeleton className="w-16 h-4 rounded" />
+                <Skeleton className="w-20 h-3 rounded hidden lg:block" />
+              </div>
+              <div className="flex flex-col items-center gap-3">
+                <Skeleton className="w-16 h-4 rounded" />
+                <Skeleton className="w-20 h-3 rounded hidden lg:block" />
+              </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-8">
           {userInvestment.map((investment, index) => {
             const sign =
               investment.type_of_percentage === "positive" ? "+" : "-";
@@ -71,23 +87,40 @@ export default function UserInvestment() {
                 : "#FE5C73";
 
             return (
-              <div key={index} className="flex items-center justify-between">
+              <div key={index} className="flex items-center justify-between shadow-lg rounded-xl p-4">
                 <div className="flex items-center gap-3">
                   <div
                     className="w-12 h-12 rounded-md flex items-center justify-center"
-                    style={{ backgroundColor: styles[index].bgcolor }}
+                    style={{
+                      backgroundColor: styles[index % styles.length].bgcolor,
+                    }}
                   >
-                    {styles[index].icon}
+                    {styles[index % styles.length].icon}
                   </div>
-                  <p className="flex flex-col">
-                    <span>{investment.name}</span>
-                    <span>{investment.type}</span>
+                  <div className="flex flex-col">
+                    <span className="w-32 truncate font-medium">{investment.name}</span>
+                    <span className="text-[#718EBF] w-32 truncate">
+                      {investment.type}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="w-16 text-center font-medium">
+                    {formatCurrency(investment.value)}
+                  </span>
+                  <span className="text-[#718EBF] w-20 text-center hidden lg:block text-nowrap">
+                    Return value
+                  </span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <p style={{ color: color }} className="w-16 text-center">
+                    {sign}
+                    {investment.percentage}%
+                  </p>
+                  <p className="text-[#718EBF] w-20 text-center hidden lg:block text-nowrap">
+                    Return value
                   </p>
                 </div>
-                <p style={{ color: color }}>
-                  {sign}
-                  {investment.percentage}%
-                </p>
               </div>
             );
           })}

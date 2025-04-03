@@ -13,7 +13,7 @@ export default function page() {
         <YearlyTotalInvestments />
         <MonthlyRevenue />
       </div>
-      <div className="w-full flex flex-col gap-4 lg:mt-8 md:mt-[4rem] lg:grid lg:grid-cols-[2fr_1fr]">
+      <div className="w-full flex flex-col gap-4 lg:mt-8 md:mt-[4rem] lg:grid lg:grid-cols-[2fr_1fr] lg:gap-[5rem] lg:items-stretch mb-4">
         <UserInvestment />
         <TrendingStock />
       </div>
