@@ -85,18 +85,19 @@ export default function ExpenseStats() {
                   cx="50%"
                   cy="50%"
                   outerRadius={110}
-                  paddingAngle={4}
                 >
                   <LabelList
                     dataKey="category"
-                    angle={39}
                     className="fill-background font-bold text-lg"
                     stroke="none"
                     fontSize={12}
                     position="inside"
-                    formatter={(value: keyof typeof chartConfig) =>
-                      chartConfig[value]?.label
-                    }
+                    formatter={(value: keyof typeof chartConfig) => {
+                      const label = chartConfig[value]?.label;
+                      return label.length > 5
+                        ? `${label.slice(0, 5)}...`
+                        : label;
+                    }}
                   />
                 </Pie>
               </PieChart>
