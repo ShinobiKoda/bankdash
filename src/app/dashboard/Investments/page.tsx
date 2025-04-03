@@ -3,6 +3,7 @@ import MonthlyRevenue from "@/components/investments/MonthlyRevenue";
 import YearlyTotalInvestments from "@/components/investments/YearlyTotalInvestments";
 import UserInvestment from "@/components/investments/UserInvestment";
 import React from "react";
+import TrendingStock from "@/components/investments/TrendingStock";
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
       </div>
       <div className="w-full flex flex-col gap-4 lg:mt-8 md:mt-[4rem] lg:grid lg:grid-cols-[2fr_1fr]">
         <UserInvestment />
+        <TrendingStock />
       </div>
     </div>
   );
