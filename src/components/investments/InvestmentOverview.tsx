@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { fetchUserData } from "@/lib/api";
 import type { Investment } from "@/types/types";
 import { Skeleton } from "../ui/skeleton";
+import { motion } from "framer-motion";
 
 import { FaDollarSign, FaChartLine, FaPercentage } from "react-icons/fa";
 
@@ -68,9 +69,12 @@ export default function InvestmentOverview() {
               </div>
             ))
         : investmentData.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex items-center gap-6 shadow-lg rounded-xl p-4 lg:px-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center"
@@ -82,7 +86,7 @@ export default function InvestmentOverview() {
                 <span className="text-[#718EBF]">{item.description}</span>
                 <span className="font-semibold text-xl">{item.amount}</span>
               </p>
-            </div>
+            </motion.div>
           ))}
     </section>
   );

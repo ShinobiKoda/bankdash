@@ -7,6 +7,7 @@ import type { UserInvestment } from "@/types/types";
 import { useState, useEffect } from "react";
 import { FaAppStoreIos, FaGoogle, FaCar } from "react-icons/fa";
 import { Skeleton } from "../ui/skeleton";
+import { motion } from "framer-motion";
 
 export default function UserInvestment() {
   const [userInvestment, setUserInvestment] = useState<UserInvestment[]>([]);
@@ -77,7 +78,12 @@ export default function UserInvestment() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col gap-8">
+        <motion.div
+          className="flex flex-col gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {userInvestment.map((investment, index) => {
             const sign =
               investment.type_of_percentage === "positive" ? "+" : "-";
@@ -87,7 +93,13 @@ export default function UserInvestment() {
                 : "#FE5C73";
 
             return (
-              <div key={index} className="flex items-center justify-between shadow-lg rounded-xl p-4">
+              <motion.div
+                key={index}
+                className="flex items-center justify-between shadow-lg rounded-xl p-4"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
                 <div className="flex items-center gap-3">
                   <div
                     className="w-12 h-12 rounded-md flex items-center justify-center"
@@ -98,7 +110,9 @@ export default function UserInvestment() {
                     {styles[index % styles.length].icon}
                   </div>
                   <div className="flex flex-col">
-                    <span className="w-32 truncate font-medium">{investment.name}</span>
+                    <span className="w-32 truncate font-medium">
+                      {investment.name}
+                    </span>
                     <span className="text-[#718EBF] w-32 truncate">
                       {investment.type}
                     </span>
@@ -121,10 +135,10 @@ export default function UserInvestment() {
                     Return value
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       )}
     </section>
   );
