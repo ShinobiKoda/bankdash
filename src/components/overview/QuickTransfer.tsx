@@ -37,7 +37,7 @@ export default function QuickTransfer() {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-semibold text-lg text-[#DDDDDD]">Quick Transfer</h2>
-      <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
+      <Carousel className="w-full max-w-[300px] lg:max-w-full md:max-w-full carousel">
         <CarouselContent>
           {transfer_recipients.map((recipient, index) => (
             <CarouselItem

@@ -118,7 +118,7 @@ export default function UserInvestment() {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className=" flex-col items-center hidden lg:flex">
                   <span className="w-16 text-center font-medium">
                     {formatCurrency(investment.value)}
                   </span>

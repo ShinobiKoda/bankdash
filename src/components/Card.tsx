@@ -52,7 +52,7 @@ export default function Credit_Card({
 
   return (
     <div className="w-full">
-      <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel">
+      <Carousel className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel">
         <CarouselContent className="-ml-4 w-full">
           {loading
             ? Array.from({ length: 3 }).map((_, index) => (
@@ -78,7 +78,7 @@ export default function Credit_Card({
               ))
             : cards.map((card) => (
                 <CarouselItem
-                  className="pl-4 basis-[85%] md:basis-[40%] sm:basis-[70%]"
+                  className="pl-4 basis-[85%] md:basis-[40%] sm:basis-[70%] lg:basis-1/3"
                   key={card.number}
                 >
                   <div className="bg-gradient-to-r from-[#4C49ED] to-[#0A06F4] text-white rounded-xl shadow-lg flex flex-col gap-6 overflow-hidden">
