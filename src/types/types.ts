@@ -22,6 +22,16 @@ export interface User{
   monthly_revenue: MonthlyRevenue[];
   user_investments: UserInvestment[];
   trending_stock: TrendingStock[];
+  card_expenses: CardExpense[]
+}
+
+export interface CardExpense{
+  card_number: string
+  total_expense: number
+  total_income: number
+  total_balance: number
+  bank: string
+  fill: string
 }
 
 export interface Investment{
@@ -71,6 +81,7 @@ export interface CreditCard{
   valid_thru: string
   balance: number;
   bank: string
+  type: string
 }
 
 export interface Transaction {

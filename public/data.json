@@ -17,21 +17,24 @@
       "name": "Eddy Cusuma",
       "valid_thru": "12/22",
       "balance": 5756,
-      "bank": "DBL"
+      "bank": "DBL",
+      "type": "Primary"
     },
     {
       "number": "1234567890213456",
       "name": "Gerad Miracle",
       "valid_thru": "02/27",
       "balance": 90336,
-      "bank": "BRC"
+      "bank": "BRC",
+      "type": "Secondary"
     },
     {
       "number": "3344134519987653",
       "name": "Gojo Satoru",
       "valid_thru": "12/01",
       "balance": 900336,
-      "bank": "ABM"
+      "bank": "ABM",
+      "type": "Secondary"
     }
   ],
   "recent_transactions": [
@@ -451,7 +454,7 @@
     },
     {
       "year": 2020,
-      "total_investment":19000
+      "total_investment": 19000
     },
     {
       "year": 2021,
@@ -542,6 +545,32 @@
       "price": 670,
       "return_value": 12,
       "return_type": "negative"
+    }
+  ],
+  "card_expenses": [
+    {
+      "card_number": "3788567856571234",
+      "total_expense": 15000,
+      "total_income": 20000,
+      "total_balance": 5000,
+      "bank": "DBL",
+      "fill": "#FFBB38"
+    },
+    {
+      "card_number": "1234567890213456",
+      "total_expense": 20000,
+      "total_income": 25000,
+      "total_balance": 5000,
+      "bank": "BRC",
+      "fill": "#16DBCC"
+    },
+    {
+      "card_number": "3344134519987653",
+      "total_expense": 10000,
+      "total_income": 15000,
+      "total_balance": 5000,
+      "bank": "ABM",
+      "fill": "#4C78FF"
     }
   ]
 }
