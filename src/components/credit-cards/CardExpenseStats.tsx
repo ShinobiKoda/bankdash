@@ -3,12 +3,7 @@
 import * as React from "react";
 import { Label, Pie, PieChart, Sector } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -23,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { PulseLoader } from "react-spinners";
 
 import { fetchUserData } from "@/lib/api";
 import type { CardExpense } from "@/types/types";
@@ -102,107 +98,114 @@ export default function CardExpenseStats() {
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <CardTitle>Card Expense Stats</CardTitle>
-
-        <Select value={activeCard} onValueChange={setActiveCard}>
-          <SelectTrigger
-            className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
-            aria-label="Select a value"
-          >
-            <SelectValue placeholder="Select card" />
-          </SelectTrigger>
-          <SelectContent align="end" className="rounded-xl">
-            {cards.map((label, index) => {
-              const colors = ["#FFBB38", "#16DBCC", "#4C78FF"];
-              return (
-                <SelectItem
-                  key={label}
-                  value={cardExpense[index]?.card_number}
-                  className="rounded-lg [&_span]:flex"
-                >
-                  <div className="flex items-center gap-2 text-xs">
-                    <span
-                      className="flex h-3 w-3 shrink-0 rounded-sm"
-                      style={{ backgroundColor: colors[index % colors.length] }}
-                    />
-                    {label}
-                  </div>
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
+        {!loading && (
+          <Select value={activeCard} onValueChange={setActiveCard}>
+            <SelectTrigger
+              className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
+              aria-label="Select a value"
+            >
+              <SelectValue placeholder="Select card" />
+            </SelectTrigger>
+            <SelectContent align="end" className="rounded-xl">
+              {cards.map((label, index) => {
+                const colors = ["#FFBB38", "#16DBCC", "#4C78FF"];
+                return (
+                  <SelectItem
+                    key={label}
+                    value={cardExpense[index]?.card_number}
+                    className="rounded-lg [&_span]:flex"
+                  >
+                    <div className="flex items-center gap-2 text-xs">
+                      <span
+                        className="flex h-3 w-3 shrink-0 rounded-sm"
+                        style={{
+                          backgroundColor: colors[index % colors.length],
+                        }}
+                      />
+                      {label}
+                    </div>
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
+        )}
       </CardHeader>
-      <CardContent className="flex flex-1 justify-center pb-0">
-        {cardExpense.length > 0 && (
-          <ChartContainer
-            id={id}
-            config={chartConfig}
-            className="mx-auto aspect-square w-full max-w-[300px]"
-          >
-            <PieChart>
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
-              <Pie
-                data={cardExpense}
-                dataKey="total_expense"
-                nameKey="card_number"
-                innerRadius={60}
-                strokeWidth={5}
-                activeIndex={activeIndex}
-                activeShape={({
-                  outerRadius = 0,
-                  ...props
-                }: PieSectorDataItem) => (
-                  <g>
-                    <Sector {...props} outerRadius={outerRadius + 10} />
-                    <Sector
-                      {...props}
-                      outerRadius={outerRadius + 25}
-                      innerRadius={outerRadius + 12}
-                    />
-                  </g>
-                )}
-              >
-                <Label
-                  content={({ viewBox }) => {
-                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                      return (
-                        <text
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          textAnchor="middle"
-                          dominantBaseline="middle"
-                        >
-                          <tspan
+      <CardContent className="flex flex-1 justify-center items-center pb-0">
+        {loading ? (
+          <PulseLoader color="#4C78FF" size={10} className="my-[4rem]" />
+        ) : (
+          cardExpense.length > 0 && (
+            <ChartContainer
+              id={id}
+              config={chartConfig}
+              className="mx-auto aspect-square w-full max-w-[300px]"
+            >
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie
+                  data={cardExpense}
+                  dataKey="total_expense"
+                  nameKey="card_number"
+                  innerRadius={60}
+                  strokeWidth={5}
+                  activeIndex={activeIndex}
+                  activeShape={({
+                    outerRadius = 0,
+                    ...props
+                  }: PieSectorDataItem) => (
+                    <g>
+                      <Sector {...props} outerRadius={outerRadius + 10} />
+                      <Sector
+                        {...props}
+                        outerRadius={outerRadius + 25}
+                        innerRadius={outerRadius + 12}
+                      />
+                    </g>
+                  )}
+                >
+                  <Label
+                    content={({ viewBox }) => {
+                      if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                        return (
+                          <text
                             x={viewBox.cx}
                             y={viewBox.cy}
-                            className="fill-foreground text-3xl font-bold"
+                            textAnchor="middle"
+                            dominantBaseline="middle"
                           >
-                            {new Intl.NumberFormat("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              maximumFractionDigits: 0, // Remove decimal points
-                            }).format(
-                              cardExpense[activeIndex]?.total_expense || 0
-                            )}
-                          </tspan>
-                          <tspan
-                            x={viewBox.cx}
-                            y={(viewBox.cy || 0) + 24}
-                            className="fill-muted-foreground"
-                          >
-                            Expense
-                          </tspan>
-                        </text>
-                      );
-                    }
-                  }}
-                />
-              </Pie>
-            </PieChart>
-          </ChartContainer>
+                            <tspan
+                              x={viewBox.cx}
+                              y={viewBox.cy}
+                              className="fill-foreground text-3xl font-bold"
+                            >
+                              {new Intl.NumberFormat("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                                maximumFractionDigits: 0,
+                              }).format(
+                                cardExpense[activeIndex]?.total_expense || 0
+                              )}
+                            </tspan>
+                            <tspan
+                              x={viewBox.cx}
+                              y={(viewBox.cy || 0) + 24}
+                              className="fill-muted-foreground"
+                            >
+                              Expense
+                            </tspan>
+                          </text>
+                        );
+                      }
+                    }}
+                  />
+                </Pie>
+              </PieChart>
+            </ChartContainer>
+          )
         )}
       </CardContent>
     </Card>
