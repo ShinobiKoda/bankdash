@@ -3,7 +3,13 @@
 import * as React from "react";
 import { Label, Pie, PieChart, Sector } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -25,34 +31,17 @@ import type { CardExpense } from "@/types/types";
 import { useState, useEffect } from "react";
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  desktop: {
-    label: "Desktop",
-  },
-  mobile: {
-    label: "Mobile",
-  },
-  january: {
-    label: "January",
+  card_expenses: {
+    label: "Card Expenses",
     color: "hsl(var(--chart-1))",
   },
-  february: {
-    label: "February",
+  total_income: {
+    label: "Total Income",
     color: "hsl(var(--chart-2))",
   },
-  march: {
-    label: "March",
+  total_balance: {
+    label: "Total Balance",
     color: "hsl(var(--chart-3))",
-  },
-  april: {
-    label: "April",
-    color: "hsl(var(--chart-4))",
-  },
-  may: {
-    label: "May",
-    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig;
 
@@ -96,8 +85,10 @@ export default function CardExpenseStats() {
   return (
     <Card data-chart={id} className="flex flex-col">
       <ChartStyle id={id} config={chartConfig} />
-      <CardHeader className="flex-row items-start space-y-0 pb-0">
-        <CardTitle>Card Expense Stats</CardTitle>
+      <CardHeader className="flex-row items-center justify-between w-full">
+        <CardTitle className="font-semibold text-xl text-[#343C6A]">
+          Card Expense Stats
+        </CardTitle>
         {!loading && (
           <Select value={activeCard} onValueChange={setActiveCard}>
             <SelectTrigger
@@ -149,7 +140,7 @@ export default function CardExpenseStats() {
                 <Pie
                   data={cardExpense}
                   dataKey="total_expense"
-                  nameKey="card_number"
+                  nameKey="bank"
                   innerRadius={60}
                   strokeWidth={5}
                   activeIndex={activeIndex}
@@ -180,7 +171,7 @@ export default function CardExpenseStats() {
                             <tspan
                               x={viewBox.cx}
                               y={viewBox.cy}
-                              className="fill-foreground text-3xl font-bold"
+                              className="fill-foreground text-2xl font-bold"
                             >
                               {new Intl.NumberFormat("en-US", {
                                 style: "currency",
@@ -208,6 +199,17 @@ export default function CardExpenseStats() {
           )
         )}
       </CardContent>
+      <CardFooter className="flex justify-center gap-4">
+        {cardExpense.map((card) => (
+          <div key={card.card_number} className="flex items-center gap-2">
+            <div
+              className="w-5 h-5 rounded-full"
+              style={{ backgroundColor: card.fill }}
+            ></div>
+            <span className="text-sm font-medium">{card.bank}</span>
+          </div>
+        ))}
+      </CardFooter>
     </Card>
   );
 }
