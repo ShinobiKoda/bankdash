@@ -39,7 +39,8 @@ export default function AddCard() {
                   number: formData.get("number") as string,
                   balance: parseFloat(formData.get("balance") as string),
                   valid_thru: formData.get("valid_thru") as string,
-                  bank: formData.get("bank") as string, // Added bank property
+                  bank: formData.get("bank") as string,
+                  type: formData.get("type") as string, // Added type property
                 };
                 handleAddCard(card);
               }}
@@ -74,6 +75,12 @@ export default function AddCard() {
                 <input
                   name="bank"
                   placeholder="Bank Name"
+                  className="border p-2 rounded"
+                  required
+                />
+                <input
+                  name="type"
+                  placeholder="Card Type (e.g., Primary, Secondary)"
                   className="border p-2 rounded"
                   required
                 />
