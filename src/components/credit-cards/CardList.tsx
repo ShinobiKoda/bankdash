@@ -5,6 +5,7 @@ import { fetchUserData } from "@/lib/api";
 import type { CreditCard } from "@/types/types";
 import { Skeleton } from "../ui/skeleton";
 import { FaCreditCard } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function CardList() {
   const [cards, setCards] = useState<CreditCard[]>([]);
@@ -55,19 +56,41 @@ export default function CardList() {
   return (
     <section className="w-full h-full">
       <h2 className="font-semibold text-xl text-[#343C6A]">Cards List</h2>
-      <div className="flex flex-col gap-4 h-full">
+      <div className="flex flex-col gap-8 h-full">
         {loading
           ? Array.from({ length: 3 }).map((_, index) => (
-              <div key={index} className="shadow-lg rounded-xl p-4">
-                <Skeleton className="w-full h-6 mb-2" />
-                <Skeleton className="w-3/4 h-4 mb-2" />
-                <Skeleton className="w-1/2 h-4" />
+              <div
+                key={index}
+                className="shadow-lg rounded-xl p-4 flex items-center justify-between"
+              >
+                <div className="flex items-center gap-4">
+                  <Skeleton className="w-10 h-10 rounded-lg" />
+                  <div className="flex flex-col gap-1">
+                    <Skeleton className="w-24 h-4" />
+                    <Skeleton className="w-32 h-4" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Skeleton className="w-16 h-4" />
+                  <Skeleton className="w-24 h-4" />
+                </div>
+                <div
+                  className="hidden lg:flex flex-col gap-1"
+                  style={{ width: "12ch" }}
+                >
+                  <Skeleton className="w-full h-4" />
+                  <Skeleton className="w-full h-4" />
+                </div>
+                <Skeleton className="w-20 h-6" />
               </div>
             ))
           : cards.map((card, index) => (
-              <div
+              <motion.div
                 className="shadow-lg rounded-xl p-4 flex flex-col gap-2"
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
@@ -96,7 +119,7 @@ export default function CardList() {
                   </p>
                   <p
                     className="hidden lg:flex flex-col"
-                    style={{ width: "12ch" }} // Reserve space for card number
+                    style={{ width: "12ch" }}
                   >
                     <span className="font-medium">Card Number</span>
                     <span className="text-[#718EBF] whitespace-nowrap">
@@ -119,7 +142,7 @@ export default function CardList() {
                       : "View Details"}
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
       </div>
     </section>
