@@ -41,8 +41,8 @@ export default function MonthlyRevenue() {
   }, []);
 
   return (
-    <Card className="w-full max-h-[329px] -ml-6">
-      <CardHeader>
+    <Card className="w-full max-h-[329px]">
+      <CardHeader className="mb-4">
         <CardTitle className="font-semibold text-xl text-[#333B69]">
           Monthly Revenue
         </CardTitle>
