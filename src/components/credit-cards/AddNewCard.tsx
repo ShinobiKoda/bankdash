@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { DatePicker } from "./DatePicker";
+import { motion } from "framer-motion";
 
 export default function AddNewCard() {
   const [formData, setFormData] = useState({
@@ -16,12 +17,9 @@ export default function AddNewCard() {
     cardNumber: false,
     expirationDate: false,
   });
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const clearErrors = () => {
     setErrors({
       cardType: false,
       name: false,
@@ -30,24 +28,45 @@ export default function AddNewCard() {
     });
   };
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    clearErrors(); // Clear all errors
+  };
+
+  const handleDateChange = (date: Date | undefined) => {
+    setSelectedDate(date);
+    clearErrors(); // Clear all errors
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = {
       cardType: !formData.cardType,
       name: !formData.name,
       cardNumber: !formData.cardNumber,
-      expirationDate: !formData.expirationDate,
+      expirationDate: !selectedDate,
     };
     setErrors(newErrors);
 
     if (!Object.values(newErrors).some((error) => error)) {
-      console.log("Form submitted successfully:", formData);
+      console.log("Form submitted successfully:", {
+        ...formData,
+        expirationDate: selectedDate,
+      });
       // Add further submission logic here
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <motion.form
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <h2 className="font-semibold text-xl text-[#343C6A]">Add New Card</h2>
       <div className="flex flex-col gap-5">
         <p className="text-[#718EBF] leading-8 max-w-[700px]">
@@ -117,8 +136,8 @@ export default function AddNewCard() {
           <div className="flex flex-col gap-2">
             <label htmlFor="expiration-date" className="text-lg">
               Expiration Date
-              </label>
-            <DatePicker />
+            </label>
+            <DatePicker onDateChange={handleDateChange} />
             {errors.expirationDate && (
               <span className="text-red-500 text-sm">
                 Expiration Date is required
@@ -135,6 +154,6 @@ export default function AddNewCard() {
           </button>
         </div>
       </div>
-    </form>
+    </motion.form>
   );
 }
