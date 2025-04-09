@@ -9,11 +9,11 @@ export default function page() {
   return (
     <div className='flex flex-col gap-7'>
       <Credit_Card />
-      <div className='flex flex-col gap-4 lg:gap-[5rem] lg:grid lg:grid-cols-[1fr_2fr]'>
+      <div className='flex flex-col gap-4 lg:gap-[5rem] lg:grid lg:grid-cols-[1fr_2fr] my-8'>
         <CardExpenseStats />
         <CardList />
       </div>
-      <div className='flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr]'>
+      <div className='flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_1fr] my-8 lg:gap-14'>
         <AddNewCard />
         <CardSetting />
       </div>
