@@ -55,7 +55,7 @@ export default function MonthlyRevenue() {
         ) : (
           <ChartContainer
             config={chartConfig}
-            className=" max-h-[329px] w-full"
+            className=" max-h-[329px] w-full -ml-4 md:-ml-0"
           >
             <LineChart
               accessibilityLayer

@@ -57,7 +57,7 @@ export default function YearlyTotalInvestments() {
         ) : chartData.length === 0 ? (
           <p>No data available.</p>
         ) : (
-          <ChartContainer config={chartConfig} className="w-full max-h-[329px]">
+          <ChartContainer config={chartConfig} className="w-full max-h-[329px] -ml-4 md:-ml-0">
             <LineChart
               accessibilityLayer
               data={chartData}
