@@ -74,7 +74,7 @@ export default function AllLoans() {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel"
+      className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel cursor-grab hover:cursor-grabbing"
     >
       <CarouselContent>
         {loading

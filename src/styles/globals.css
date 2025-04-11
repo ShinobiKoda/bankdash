@@ -1,0 +1,9 @@
+/* ...existing code... */
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.hover\:cursor-grabbing:hover {
+  cursor: grabbing;
+}

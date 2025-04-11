@@ -91,7 +91,7 @@ export default function AccountCard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Carousel className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel">
+          <Carousel className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel cursor-grab hover:cursor-grabbing">
             <CarouselContent>
               {cards.map((card, index) => (
                 <CarouselItem
