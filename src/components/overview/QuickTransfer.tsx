@@ -10,8 +10,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
 
 export default function QuickTransfer() {
+  const { toast } = useToast();
   const [amount, setAmount] = useState("");
   const [message, setMessage] = useState("");
 
@@ -26,11 +28,23 @@ export default function QuickTransfer() {
 
   const handleSend = () => {
     if (!isNaN(Number(amount)) && amount.trim() !== "") {
+      toast({
+        title: "Transfer Successful",
+        description: `You have sent $${amount}.`,
+        variant: "default",
+        duration: 3000, // Toast will disappear after 3 seconds
+      });
       setMessage(`Transfer of $${amount} initiated!`);
-      setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+      setAmount(""); // Clear the input field
+      
     } else {
+      toast({
+        title: "Invalid Amount",
+        description: "Please enter a valid numeric amount.",
+        variant: "destructive",
+        duration: 3000, // Toast will disappear after 3 seconds
+      });
       setMessage("Please enter a valid numeric amount.");
-      setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
     }
   };
 
