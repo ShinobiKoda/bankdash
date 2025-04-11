@@ -23,7 +23,7 @@ export default function Header() {
     "/dashboard/Investments": "Investments",
   };
 
-  const title = pageTitles[pathname] || "Dashboard";
+  const title = pathname ? pageTitles[pathname] || "Dashboard" : "Dashboard";
 
   const { toggleSidebar } = useSidebar();
 
