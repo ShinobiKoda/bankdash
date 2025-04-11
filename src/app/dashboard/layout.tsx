@@ -3,6 +3,7 @@
 import { AppSidebar } from "@/components/overview/Sidebar";
 import Header from "@/components/overview/Header";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 
@@ -15,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Header />
         <div className="px-4 lg:px-8">{children}</div>
       </div>
+      <Toaster />
     </SidebarProvider>
   );
 }

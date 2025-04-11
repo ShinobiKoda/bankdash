@@ -6,8 +6,11 @@ import { fetchUserData } from "@/lib/api";
 import type { ActiveLoan } from "@/types/types";
 import { motion } from "framer-motion";
 import { Skeleton } from "../ui/skeleton";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ActiveLoans() {
+  const { toast } = useToast();
+
   const [activeLoans, setActiveLoans] = useState<ActiveLoan[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -24,6 +27,15 @@ export default function ActiveLoans() {
 
   const formatCurrency = (amount: number) => {
     return `$${amount.toLocaleString()}`;
+  };
+
+  const handleRepay = (loanId: number) => {
+    toast({
+      title: "Repayment Successful",
+      description: `You have successfully repaid loan #${loanId}.`,
+      variant: "default", // Ensure this matches the supported variants in your toast configuration
+      duration: 3000, // Toast will disappear after 3 seconds
+    });
   };
 
   useEffect(() => {
@@ -90,7 +102,10 @@ export default function ActiveLoans() {
                     {formatCurrency(loan.installment)} /month
                   </td>
                   <td className="p-3">
-                    <button className="px-5 py-2 rounded-3xl border-2 border-[#1814F3] text-[#1814F3]">
+                    <button
+                      onClick={() => handleRepay(loan.sl_no)}
+                      className="px-5 py-2 rounded-3xl border-2 border-[#1814F3] text-[#1814F3]"
+                    >
                       Repay
                     </button>
                   </td>
