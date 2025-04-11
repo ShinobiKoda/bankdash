@@ -23,6 +23,22 @@ export interface User{
   user_investments: UserInvestment[];
   trending_stock: TrendingStock[];
   card_expenses: CardExpense[]
+  all_loans: Loan[];
+  loan_overview: ActiveLoan[]
+}
+
+export interface Loan{
+  description: string
+  amount: number
+}
+
+export interface ActiveLoan{
+  sl_no: number
+  loan_money: number;
+  left_to_repay: number;
+  interest_rate: string;
+  duration: string
+  installment: number;
 }
 
 export interface CardExpense{

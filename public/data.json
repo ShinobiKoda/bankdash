@@ -572,5 +572,86 @@
       "bank": "ABM",
       "fill": "#4C78FF"
     }
+  ],
+  "all_loans": [
+    {
+      "description": "Personal Loans",
+      "amount": 50000
+    },
+    {
+      "description": "Coporate Loans",
+      "amount": 100000
+    },
+    {
+      "description": "Business Loans",
+      "amount": 500000
+    }
+  ],
+  "loan_overview": [
+    {
+      "sl_no": 1,
+      "loan_money": 100000,
+      "left_to_repay": 40500,
+      "interest_rate": "12%",
+      "duration": "8 Months",
+      "installment" : 2000
+    },
+    {
+      "sl_no": 2,
+      "loan_money": 500000,
+      "left_to_repay": 250000,
+      "duration": "36 Months",
+      "interest_rate": "10%",
+      "installment" : 8000
+    },
+    {
+      "sl_no": 3,
+      "loan_money": 900000,
+      "left_to_repay": 40500,
+      "duration": "12 Months",
+      "interest_rate": "12%",
+      "installment" : 5000
+    },
+    {
+      "sl_no": 4,
+      "loan_money": 50000,
+      "left_to_repay": 40500,
+      "duration": "25 Months",
+      "interest_rate": "5%",
+      "installment" : 2000
+    },
+    {
+      "sl_no": 5,
+      "loan_money": 50000,
+      "left_to_repay": 40500,
+      "duration": "5 Months",
+      "interest_rate": "16%",
+      "installment" : 10000
+    },
+    {
+      "sl_no": 6,
+      "loan_money": 80000,
+      "left_to_repay": 25500,
+      "duration": "14 Months",
+      "interest_rate": "8%",
+      "installment" : 2000
+    },
+    {
+      "sl_no": 7,
+      "loan_money": 12000,
+      "left_to_repay": 5500,
+      "duration": "9 Months",
+      "interest_rate": "13%",
+      "installment" : 500
+    },
+    {
+      "sl_no": 8,
+      "loan_money": 160000,
+      "left_to_repay": 100800,
+      "duration": "3 Months",
+      "interest_rate": "12%",
+      "installment" : 900
+    }
+
   ]
 }
