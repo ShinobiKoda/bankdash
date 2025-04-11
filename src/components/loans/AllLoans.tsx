@@ -80,7 +80,7 @@ export default function AllLoans() {
         {loading
           ? Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
-                <div className="flex items-center gap-4 px-5 py-6 rounded-xl shadow-lg">
+                <div className="flex items-center gap-4 px-5 py-6 rounded-xl">
                   <Skeleton className="w-14 h-14 rounded-full" />
                   <div className="flex flex-col gap-2">
                     <Skeleton className="h-4 w-24" />
@@ -92,7 +92,7 @@ export default function AllLoans() {
           : loans.map((loan, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
                 <motion.div
-                  className="flex items-center gap-4 px-5 py-6 rounded-xl shadow-lg"
+                  className="flex items-center gap-4 px-5 py-6 rounded-xl "
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -119,7 +119,7 @@ export default function AllLoans() {
         {!loading && (
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
             <motion.div
-              className="flex items-center gap-4 px-5 py-6 rounded-xl shadow-lg"
+              className="flex items-center gap-4 px-5 py-6 rounded-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: loans.length * 0.1 }}
