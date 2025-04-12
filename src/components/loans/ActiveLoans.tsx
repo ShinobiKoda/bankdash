@@ -131,9 +131,14 @@ export default function ActiveLoans() {
                 </motion.tr>
               ))}
           {!loading && activeLoans.length > 0 && (
-            <tr className="border-t font-bold text-red-500">
+            <motion.tr
+              className="border-t font-bold text-red-500"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
               <td className="p-3 hidden md:table-cell">Total</td>
-              <td className="p-3">
+              <td className="p-3 hidden md:table-cell">
                 {formatCurrency(calculateTotals().totalLoanMoney)}
               </td>
               <td className="p-3"></td>
@@ -143,7 +148,7 @@ export default function ActiveLoans() {
                 {formatCurrency(calculateTotals().totalInstallment)} /month
               </td>
               <td className="p-3"></td>
-            </tr>
+            </motion.tr>
           )}
         </tbody>
       </table>

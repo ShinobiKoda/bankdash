@@ -90,7 +90,7 @@ export default function AllLoans() {
               </CarouselItem>
             ))
           : loans.map((loan, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4 -ml-8">
                 <motion.div
                   className="flex items-center gap-4 px-5 py-6 rounded-xl "
                   initial={{ opacity: 0, y: 20 }}
