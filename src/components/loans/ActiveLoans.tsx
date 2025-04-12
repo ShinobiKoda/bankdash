@@ -13,6 +13,7 @@ export default function ActiveLoans() {
 
   const [activeLoans, setActiveLoans] = useState<ActiveLoan[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [repaidLoans, setRepaidLoans] = useState<Set<number>>(new Set());
 
   const getActiveLoans = async () => {
     try {
@@ -30,12 +31,25 @@ export default function ActiveLoans() {
   };
 
   const handleRepay = (loanId: number) => {
+    setRepaidLoans((prev) => new Set(prev).add(loanId));
     toast({
       title: "Repayment Successful",
       description: `You have successfully repaid loan #${loanId}.`,
       variant: "default", // Ensure this matches the supported variants in your toast configuration
       duration: 3000, // Toast will disappear after 3 seconds
     });
+  };
+
+  const calculateTotals = () => {
+    const totalLoanMoney = activeLoans.reduce(
+      (sum, loan) => sum + loan.loan_money,
+      0
+    );
+    const totalInstallment = activeLoans.reduce(
+      (sum, loan) => sum + loan.installment,
+      0
+    );
+    return { totalLoanMoney, totalInstallment };
   };
 
   useEffect(() => {
@@ -83,7 +97,7 @@ export default function ActiveLoans() {
                   </td>
                 </tr>
               ))
-            : activeLoans.map((loan) => (
+            : activeLoans.map((loan, index) => (
                 <motion.tr
                   key={loan.sl_no}
                   className="border-b"
@@ -104,13 +118,33 @@ export default function ActiveLoans() {
                   <td className="p-3">
                     <button
                       onClick={() => handleRepay(loan.sl_no)}
-                      className="px-5 py-2 rounded-3xl border-2 border-[#1814F3] text-[#1814F3]"
+                      className={`px-5 py-2 rounded-3xl border-2 ${
+                        index === 0 || repaidLoans.has(loan.sl_no)
+                          ? "border-[#1814F3] text-[#1814F3]"
+                          : "border-gray-400 text-gray-400"
+                      }`}
+                      disabled={repaidLoans.has(loan.sl_no)}
                     >
                       Repay
                     </button>
                   </td>
                 </motion.tr>
               ))}
+          {!loading && activeLoans.length > 0 && (
+            <tr className="border-t font-bold text-red-500">
+              <td className="p-3 hidden md:table-cell">Total</td>
+              <td className="p-3">
+                {formatCurrency(calculateTotals().totalLoanMoney)}
+              </td>
+              <td className="p-3"></td>
+              <td className="p-3 hidden md:table-cell"></td>
+              <td className="p-3 hidden md:table-cell"></td>
+              <td className="p-3 hidden md:table-cell">
+                {formatCurrency(calculateTotals().totalInstallment)} /month
+              </td>
+              <td className="p-3"></td>
+            </tr>
+          )}
         </tbody>
       </table>
     </section>
