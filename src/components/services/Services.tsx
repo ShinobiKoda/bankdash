@@ -4,9 +4,9 @@ import React from "react";
 import {
   faShoppingBag,
   faHelmetSafety,
+  faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Skeleton } from "../ui/skeleton";
 import { motion } from "framer-motion";
 import {
   Carousel,
@@ -33,7 +33,7 @@ export default function Services() {
     {
       title: "Safety",
       description: "We are your allies",
-      icon: faHelmetSafety,
+      icon: faShieldAlt,
       iconBgColor: "#DCFAF8",
       iconColor: "#16DBCC",
     },
@@ -49,7 +49,12 @@ export default function Services() {
       <CarouselContent>
         {services.map((service, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 -ml-8">
-            <div className="flex items-center gap-4 px-8 py-6">
+            <motion.div
+              className="flex items-center gap-4 px-8 py-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: services[index].iconBgColor }}
@@ -62,9 +67,11 @@ export default function Services() {
               </div>
               <p className="flex flex-col">
                 <span className="font-lg font-semibold">{service.title}</span>
-                <span className="text-[#718EBF] font-normal">{service.description}</span>
+                <span className="text-[#718EBF] font-normal">
+                  {service.description}
+                </span>
               </p>
-            </div>
+            </motion.div>
           </CarouselItem>
         ))}
       </CarouselContent>
