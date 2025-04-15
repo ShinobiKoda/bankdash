@@ -72,11 +72,6 @@ const items = [
     icon: { solid: faTools, regular: faTools }, // Replace spade with tools icon
   },
   {
-    title: "My Privileges",
-    url: "/dashboard/Privileges",
-    icon: { solid: faLightbulb, regular: farLightbulb },
-  },
-  {
     title: "Setting",
     url: "/dashboard/Settings",
     icon: { solid: faCogs, regular: faCogs }, // No regular version, use solid for both

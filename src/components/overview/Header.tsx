@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../ui/sidebar";
 import { motion } from "framer-motion"; // Import Framer Motion
+import Link from "next/link";
 
 import { Settings, BellDotIcon } from "lucide-react";
 
@@ -19,7 +20,6 @@ export default function Header() {
     "/dashboard/Loans": "Loans",
     "/dashboard/Accounts": "Accounts",
     "/dashboard/Credit-cards": "Credit Cards",
-    "/dashboard/Privileges": "My Privileges",
     "/dashboard/Investments": "Investments",
   };
 
@@ -93,7 +93,9 @@ export default function Header() {
             />
           </div>
           <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
-            <Settings className="text-[#718EBF]" />
+            <Link href="/dashboard/Settings">
+              <Settings className="text-[#718EBF]" />
+            </Link>
           </div>
           <div className="min-w-12 min-h-12 bg-[#F5F7FA] rounded-full hidden lg:flex lg:items-center lg:justify-center hover:opacity-80 cursor-pointer">
             <BellDotIcon className="text-[#FE5C73]" />
