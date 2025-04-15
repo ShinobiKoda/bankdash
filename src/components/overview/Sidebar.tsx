@@ -12,14 +12,12 @@ import {
   faUser,
   faPiggyBank,
   faCreditCard,
-  faLightbulb,
   faCogs,
   faTools,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faUser as farUser,
   faCreditCard as farCreditCard,
-  faLightbulb as farLightbulb,
 } from "@fortawesome/free-regular-svg-icons";
 
 import {
