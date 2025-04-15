@@ -165,7 +165,7 @@ export default function BankServices() {
               </p>
               <button
                 onClick={() => handleButtonClick(index)} // Add click handler
-                className={`font-medium cursor-pointer px-8 py-2 rounded-3xl lg:border-2 ${
+                className={`font-medium cursor-pointer lg:px-8 lg:py-2 lg:rounded-3xl lg:border-2 ${
                   activeButton === index
                     ? "text-[#1814F3] lg:border lg:border-[#1814F3]"
                     : "text-[#718EBF] lg:border lg:border-[#718EBF]"
