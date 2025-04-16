@@ -36,8 +36,8 @@ export default function Header() {
   };
 
   return (
-    <div className="w-full">
-      <div className="relative flex items-center justify-between mb-5 border-b">
+    <div className="w-full ]">
+      <div className="relative flex items-center justify-between mb-5 border-b-2 max-w-[700px]">
         {tabs.map((tab, index) => (
           <button
             key={tab}

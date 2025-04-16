@@ -27,20 +27,34 @@ export default function Security() {
       <div>
         <h3 className="mb-4">Change Password</h3>
         <form action="" className="w-full flex flex-col gap-4">
-          <div className="w-full flex flex-col gap-2">
+          <div className="w-full flex flex-col gap-2 max-w-[510px]">
             <label htmlFor="current-password">Current Password</label>
-            <input type="password" id="current-password" name="current-password" placeholder="********" className="p-3 border- border-[#DFEAF2] rounded-lg"/>
+            <input
+              type="password"
+              id="current-password"
+              name="current-password"
+              placeholder="********"
+              className="p-3 border border-[#DFEAF2] rounded-lg outline-none"
+            />
           </div>
-          <div className="w-full flex flex-col gap-2">
+          <div className="w-full flex flex-col gap-2 max-w-[510px]">
             <label htmlFor="new-password">New Password</label>
-            <input type="password" id="new-password" name="new-password" placeholder="********" className="p-3 border- border-[#DFEAF2] rounded-lg"/>
+            <input
+              type="password"
+              id="new-password"
+              name="new-password"
+              placeholder="********"
+              className="p-3 border border-[#DFEAF2] rounded-lg outline-none"
+            />
           </div>
+          <div className="w-full flex lg:items-end lg:justify-end">
           <button
-          type="submit"
-          className="py-3 w-full text-xl font-medium text-white bg-[#1814F3] my-5 rounded-xl border-none outline-none"
-        >
-          Save
-        </button>
+            type="submit"
+            className="py-3 w-full lg:w-[190px] hover:opacity-90 cursor-pointer text-xl font-medium text-white bg-[#1814F3] my-5 rounded-xl border-none outline-none"
+          >
+            Save
+          </button>
+        </div>
         </form>
         <p></p>
       </div>

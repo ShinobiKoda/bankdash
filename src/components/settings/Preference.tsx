@@ -80,6 +80,14 @@ export default function Preference() {
           </span>
         </label>
       </div>
+      <div className="w-full flex lg:items-end lg:justify-end">
+          <button
+            type="submit"
+            className="py-3 lg:w-[190px] hover:opacity-90 cursor-pointer w-full text-xl font-medium text-white bg-[#1814F3] my-5 rounded-xl border-none outline-none"
+          >
+            Save
+          </button>
+        </div>
     </div>
   );
 }

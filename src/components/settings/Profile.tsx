@@ -163,15 +163,15 @@ export default function Profile() {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-6">
-      <div className="w-full flex items-center justify-center">
+    <div className="w-full flex flex-col gap-6 lg:grid lg:grid-cols-[1fr_4fr] lg:mt-[4rem]">
+      <div className="w-full flex items-center justify-center lg:items-start lg:justify-start lg:flex-1">
         <div className="relative">
-          <div className="w-[170px] h-[170px] rounded-full overflow-hidden ">
+          <div className="w-[200px] h-[200px] rounded-full overflow-hidden ">
             <Image
               src={profilePic}
               alt="Profile Picture"
-              width={170}
-              height={170}
+              width={200}
+              height={200}
               className=""
             />
           </div>
@@ -189,8 +189,8 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="">
+        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2">
           {formElements.map((element, index) => (
             <div className="flex flex-col gap-2" key={index}>
               <label htmlFor={element.for} className="text-lg font-normal">
@@ -220,12 +220,14 @@ export default function Profile() {
             </div>
           ))}
         </div>
-        <button
-          type="submit"
-          className="py-3 w-full text-xl font-medium text-white bg-[#1814F3] my-5 rounded-xl border-none outline-none"
-        >
-          Save
-        </button>
+        <div className="w-full flex lg:items-end lg:justify-end">
+          <button
+            type="submit"
+            className="py-3 lg:w-[190px] w-full text-xl font-medium text-white bg-[#1814F3] my-5 rounded-xl border-none outline-none hover:opacity-90 cursor-pointer"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
