@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useToast } from "@/hooks/use-toast";
 
 type FormKeys =
   | "name"
@@ -18,6 +19,8 @@ type FormKeys =
   | "country";
 
 export default function Profile() {
+  const { toast } = useToast();
+
   const [profilePic, setProfilePic] = useState("/images/profile-pic.svg");
   const [formData, setFormData] = useState<Record<FormKeys, string>>({
     name: "",
@@ -75,6 +78,14 @@ export default function Profile() {
         country: "",
       });
       setErrors({});
+
+      // Show success toast
+      toast({
+        title: "Success",
+        description: "Your profile has been saved successfully.",
+        variant: "default", // Ensure this matches the supported variants in your toast configuration
+        duration: 3000,
+      });
     }
   };
 
