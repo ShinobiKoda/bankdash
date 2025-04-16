@@ -52,7 +52,7 @@ export default function Credit_Card({
 
   return (
     <div className="w-full">
-      <Carousel className="w-full max-w-[320px] lg:max-w-full md:max-w-full carousel cursor-grab hover:cursor-grabbing">
+      <Carousel className="w-full max-w-[340px] lg:max-w-full md:max-w-full carousel cursor-grab hover:cursor-grabbing">
         <CarouselContent className="-ml-4 w-full">
           {loading
             ? Array.from({ length: 3 }).map((_, index) => (
