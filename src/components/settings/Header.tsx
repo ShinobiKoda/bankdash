@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Profile from "./Profile";
 import Preference from "./Preference";
 import Security from "./Security";
 
 export default function Header() {
-  const tabs = ["Edit Profile", "Preference", "Security"];
+  const tabs = useMemo(() => ["Edit Profile", "Preference", "Security"], []); // Wrapped in useMemo
   const [activeTab, setActiveTab] = useState("Edit Profile");
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]); // Explicitly typed
@@ -20,7 +20,7 @@ export default function Header() {
         left: activeTabElement.offsetLeft,
       });
     }
-  }, [activeTab]);
+  }, [activeTab, tabs]); // Added 'tabs' to the dependency array
 
   const renderContent = () => {
     switch (activeTab) {
